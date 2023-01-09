@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import axios from 'axios';
+import React, { useState } from 'react';
+import axios from '../api/axios';
+
+const REGISTER_URL ='/auth/register'; 
 
 const Register = () => {
 
@@ -17,7 +19,7 @@ const Register = () => {
     const handelSubmit = async e =>{
         e.preventDefault()
         try{
-            const res = await axios.post("http://localhost:8000/api/auth/register", inputs)
+            const res = await axios.post(REGISTER_URL, inputs)
             console.log(res)
         }
         catch(err){
@@ -25,30 +27,28 @@ const Register = () => {
         }
     }
     
-
-  return (
-    <div>
+    return (
         <div>
-            <h1>Registration</h1>
-            <form>
-                <label>Email</label>
-                <input 
-                type="text"
-                name='email' 
-                onChange={handelChange} />
-                <label>Password</label>
-                <input 
-                type="text"
-                name='password'  
-                onChange={handelChange} 
-                />
-                <button onClick={handelSubmit}>Register</button>
-                {error && <p> {error}</p>}
-            </form>
+            <div>
+                <h1>Registera</h1>
+                <form>
+                    <label>Email</label>
+                    <input 
+                    type="text"
+                    name='email' 
+                    onChange={handelChange} />
+                    <label>Lösenord</label>
+                    <input 
+                    type="text"
+                    name='password'  
+                    onChange={handelChange} 
+                    />
+                    <button onClick={handelSubmit}>Registera</button>
+                    {error && <p> {error}</p>}
+                </form>
+            </div>
         </div>
-       
-    </div>
-  )
+    )
 }
 
 export default Register

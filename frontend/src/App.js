@@ -1,43 +1,34 @@
 import './App.css';
 //import axios from "axios";
 //import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Ads from './pages/Ads';
+import NewAd from './pages/NewAd';
+import NotFound from './pages/NotFound';
 
 function App() {
 
-  /* const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-
-
-  const register = () => {
-
-
-    axios.post('http://localhost:3001/register', {
-      username: username,
-      password: password,
-      }).then((response) => {
-        console.log(response);
-      });
-  };
-   */
 
   return (
     <div className="App">
-      <BrowserRouter>
+    
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path='/login' element={<Login />}/>
+        <Route path="/register" element={<Register />}/>
+        <Route path="/ads" element={<Ads />}/>
+        <Route path="/ads/:id" element={<Ads />}/>
+        <Route path="/ads/new" element={<NewAd />}/>
+        <Route path="*" element={<NotFound />}/>
+      </Routes>
+      <Footer />
 
-
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path='/Login' element={<Login />}/>
-          <Route path="/Register" element={<Register />}/>
-        </Routes>
-
-
-      </BrowserRouter>
 
 
         {/* <div>
