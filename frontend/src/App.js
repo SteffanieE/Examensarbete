@@ -8,7 +8,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Ads from './pages/Ads';
-import NewAd from './pages/NewAd';
+import Ad from './pages/Ad';
+import CreateAd from './pages/CreateAd';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -20,11 +21,13 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
-        <Route path="/ads" element={<Ads />}/>
-        <Route path="/ads/:id" element={<Ads />}/>
-        <Route path="/ads/new" element={<NewAd />}/>
+        <Route path='/loggain' element={<Login />}/>
+        <Route path="/registera" element={<Register />}/>
+        {/* <Route path="/annonser" element={<Ads />}/> */}
+        <Route path="/annonser" element={<Ads />}/>
+   
+        <Route path="/annonser/:id" element={<Ad />}/>
+        <Route path="/annonser/skapa" element={<CreateAd />}/>
         <Route path="*" element={<NotFound />}/>
       </Routes>
       <Footer />

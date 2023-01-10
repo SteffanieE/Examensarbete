@@ -43,6 +43,7 @@ const Register = () => {
                     name='password'  
                     onChange={handelChange} 
                     />
+         
                     <button onClick={handelSubmit}>Registera</button>
                     {error && <p> {error}</p>}
                 </form>

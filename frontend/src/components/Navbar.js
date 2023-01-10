@@ -7,10 +7,13 @@ const Navbar = () => {
    return (
     <div> 
         <ul>
-            <li> <Link to="/">Home</Link></li>
-            <li> <Link to="/ads">Ads</Link></li>
-            <li> {currentUser? <span onClick={logout}>Logga ut {currentUser.email}</span> : <Link to="/login">Login</Link> }</li>
-            <li> <Link to="/register">Register</Link></li>
+            <li> <Link to="/">Hem</Link></li>
+            <li> <Link to="/annonser">Annonser</Link></li>
+            <Link className="link" to="/?cat=mat">
+            <h6>mat</h6>
+          </Link>
+            <li> {currentUser? <span onClick={logout}>Logga ut {currentUser.email}</span> : <Link to="/loggain">Logga in</Link> }</li>
+            <li> <Link to="/registera">Register</Link></li>
         </ul>
         
     </div>
