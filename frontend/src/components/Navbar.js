@@ -12,8 +12,11 @@ const Navbar = () => {
             <Link className="link" to="/?cat=mat">
             <h6>mat</h6>
           </Link>
-            <li> {currentUser? <span onClick={logout}>Logga ut {currentUser.email}</span> : <Link to="/loggain">Logga in</Link> }</li>
+            <li> {currentUser? <Link to="/mina-sidor">Mina Sidor</Link> : <Link to="/loggain">Logga in</Link> }</li>
             <li> <Link to="/registera">Register</Link></li>
+           
+
+            
         </ul>
         
     </div>

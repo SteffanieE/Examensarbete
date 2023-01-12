@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState  } from "react";
 import { Link, useLocation } from "react-router-dom"
-
+import moment from "moment";
 import axios from '../api/axios';
 
 
@@ -45,8 +45,7 @@ const Ads = () => {
   return (
     <div>
         <h1>All Ads</h1>
-        <Link to="/ads/1">Ad 1</Link>
-        <Link to="/ads/2">Ad 2</Link>
+      
 
         <Link to="/annonser/mat">Mat</Link>
         <Link to="/annonser/furniture">Möbler</Link>
@@ -62,8 +61,9 @@ const Ads = () => {
            {/*  <div className="img">
               <img src={`../upload/${ad.img-url}`} alt="" />
             </div> */}
-     
             <p>{ad.date}</p>
+     
+            <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
             <div className="img">
               <img src={`../upload/${ad.img_url}`} alt="" />
             </div>

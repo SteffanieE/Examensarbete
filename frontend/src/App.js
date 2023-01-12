@@ -11,6 +11,7 @@ import Ads from './pages/Ads';
 import Ad from './pages/Ad';
 import CreateAd from './pages/CreateAd';
 import NotFound from './pages/NotFound';
+import MyPage from './pages/MyPage';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/registera" element={<Register />}/>
         {/* <Route path="/annonser" element={<Ads />}/> */}
         <Route path="/annonser" element={<Ads />}/>
+        <Route path='/mina-sidor' element={<MyPage />}/>
    
         <Route path="/annonser/:id" element={<Ad />}/>
         <Route path="/annonser/skapa" element={<CreateAd />}/>

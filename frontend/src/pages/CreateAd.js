@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext.js";
+
 
 import axios from '../api/axios';
 import moment from "moment";
 
 const CreateAd = () => {
+
+    const { currentUser } = useContext(AuthContext);
 
     const state = useLocation().state;
 
@@ -16,7 +20,7 @@ const CreateAd = () => {
     const [street, setStreet] = useState(state?.street || "");
     const [zipcode, setZipcode] = useState(state?.zipcode || "");
     const [city, setCity] = useState(state?.city || "");
-
+    
  
     
     const date = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
@@ -53,6 +57,7 @@ const CreateAd = () => {
         console.log(street)
         console.log(zipcode)
         console.log(city)
+        console.log(currentUser.id)
 
 
 
@@ -67,7 +72,8 @@ const CreateAd = () => {
                 img_url: image ? imgUrl : "",
                 street,
                 zipcode,
-                city
+                city,
+                user_id: currentUser.id
               });
               
         } catch (err) {
@@ -94,11 +100,11 @@ const CreateAd = () => {
                 onChange={(e) => setDescription(e.target.value)}
                 />
             
-                <textarea
+               {/*  <textarea
                 type="text"
                 placeholder="Kategori"
                 onChange={(e) => setCategory(e.target.value)}
-                />
+                /> */}
 
                 <input
                     style={{ display: "none" }}
@@ -113,14 +119,14 @@ const CreateAd = () => {
             
                 
           
-             {/*    
+               
               
                 <select name="categories" id="categories"  onChange={(e) => setCategory(e.target.value)}>
                     <option value="clothes">Kläder</option>
                     <option value="food">Mat</option>
                     <option value="furniture">Inredning</option>
                    
-                </select> */}
+                </select> 
 
         
                 <input
