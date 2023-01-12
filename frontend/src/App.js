@@ -12,6 +12,7 @@ import Ad from './pages/Ad';
 import CreateAd from './pages/CreateAd';
 import NotFound from './pages/NotFound';
 import MyPage from './pages/MyPage';
+import UpdateAd from './pages/UpdateAd';
 
 function App() {
 
@@ -29,7 +30,8 @@ function App() {
         <Route path='/mina-sidor' element={<MyPage />}/>
    
         <Route path="/annonser/:id" element={<Ad />}/>
-        <Route path="/annonser/skapa" element={<CreateAd />}/>
+        <Route path="/annonser/updatera" element={<UpdateAd />}/>
+        <Route path="/skapa" element={<CreateAd />}/>
         <Route path="*" element={<NotFound />}/>
       </Routes>
       <Footer />

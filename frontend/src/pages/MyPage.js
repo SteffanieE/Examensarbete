@@ -13,12 +13,6 @@ const MyPage = () => {
     const id = currentUser.id;
 
 
-    
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [street, setStreet] = useState("");
-    const [zipcode, setZipcode] = useState("");
-    const [city, setCity] = useState("");
 
     
 
@@ -58,31 +52,6 @@ const MyPage = () => {
         }      
     }
 
-    const handleUpdate = async ( adId ) => {
-        
-        
-
-         
-        console.log(title)
-     
-    
-        try {
-           await axios.put(`/ads/${adId}`, {
-                title,
-                description,
-                street,
-                zipcode,
-                city,
-
-            });
-            window.location.reload(false);
-            
-              
-        } catch (err) {
-          console.log(err);
-        }
-      };
-    
 
      
      return (
@@ -93,58 +62,20 @@ const MyPage = () => {
         
             <div className="adss">
                 {ads.map((ad) => (
-                    <div className="ad" key={ad.id}>
-
-                        <p>{ad.title}</p>
-                        <input
-                            type="text"
-                            placeholder="Rubrik"
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                     
-                    
-              
-                    
+                    <div className="ad" key={ad.id}>                        
                         <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
                         <div className="img">
                             <img src={`../upload/${ad.img_url}`} alt="" />
                         </div>
-                        <p>{ad.category}</p>
-                       
-                  
-                        <div className="content">
-                            <p>{getText(ad.description)}</p> 
-                            <textarea
-                            type="text"
-                            placeholder= {ad.description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            />          
-                        
-                        </div>
+                        <p>{ad.category}</p> 
+                        <h1>{ad.title}</h1>                 
+                        <p>{getText(ad.description)}</p> 
                         <h3>Hämtnings adress:</h3>
-
-                        
                         <p>{ad.street}</p>
                         <p>{ad.zipcode}</p>
                         <p>{ad.city}</p>
-                        <input
-                            type="text"
-                            placeholder="Adress"
-                            onChange={(e) => setStreet(e.target.value)}
-                        />
-                         <input
-                            type="text"
-                            placeholder="Postnummer"
-                            onChange={(e) => setZipcode(e.target.value)}
-                        />
-                         <input
-                            type="text"
-                            placeholder="Ort"
-                            onChange={(e) => setCity(e.target.value)}
-                        />
-                            <button onClick={() => handleUpdate(ad.id)}>Uppdatera annons</button>
-                            <button onClick={() => handleDelete(ad.id)}>Radera</button>
-                        <li />
+                        <Link to={`/skapa?edit=2`} state={ad}>Uppdatera</Link>    
+                        <button onClick={() => handleDelete(ad.id)}>Radera</button> 
                     </div>
                 ))}
             </div>     

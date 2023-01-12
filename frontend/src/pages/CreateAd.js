@@ -10,16 +10,16 @@ const CreateAd = () => {
 
     const { currentUser } = useContext(AuthContext);
 
-  
-  
+    const state = useLocation().state;
+    console.log(state)
 
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    const [title, setTitle] = useState(state?.title || "");
+    const [description, setDescription] = useState(state?.description || "");
     const [image, setImage] = useState(null);
-    const [category, setCategory] = useState("");
-    const [street, setStreet] = useState("");
-    const [zipcode, setZipcode] = useState("");
-    const [city, setCity] = useState("");
+    const [category, setCategory] = useState(state?.category || "");
+    const [street, setStreet] = useState(state?.street || "");
+    const [zipcode, setZipcode] = useState(state?.zipcode || "");
+    const [city, setCity] = useState(state?.city || "");
     
  
     
@@ -64,7 +64,17 @@ const CreateAd = () => {
      
     
         try {
-           await axios.post(`/ads/`, {
+
+          state
+          ? await axios.put(`/ads/${state.id}`, {
+              title,
+              description,
+              category,
+              street,
+              zipcode,
+              city,
+            })
+          : await axios.post(`/ads/`, {
                 title,
                 description,
                 date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
@@ -89,6 +99,7 @@ const CreateAd = () => {
             <form>
                 <input
                 type="text"
+                value={title}
                 placeholder="Rubrik"
                 onChange={(e) => setTitle(e.target.value)}
                 />
@@ -96,6 +107,7 @@ const CreateAd = () => {
         
                 <textarea
                 type="text"
+                value={description}
                 placeholder="Beskrivning"
                 onChange={(e) => setDescription(e.target.value)}
                 />
@@ -110,7 +122,6 @@ const CreateAd = () => {
                     style={{ display: "none" }}
                     type="file"
                     id="file"
-                    name=""
                     onChange={(e) => setImage(e.target.files[0])}
                 />
                 <label className="file" htmlFor="file">
@@ -121,7 +132,7 @@ const CreateAd = () => {
           
                
               
-                <select name="categories" id="categories"  onChange={(e) => setCategory(e.target.value)}>
+                <select name="categories" value={category} id="categories"  onChange={(e) => setCategory(e.target.value)}>
                     <option value="clothes">Kläder</option>
                     <option value="food">Mat</option>
                     <option value="furniture">Inredning</option>
@@ -131,6 +142,7 @@ const CreateAd = () => {
         
                 <input
                 type="text"
+                value={street}
                 placeholder="street"
                 onChange={(e) => setStreet(e.target.value)}
                 />
@@ -138,6 +150,7 @@ const CreateAd = () => {
         
                 <input
                 type="number"
+                value={zipcode}
                 placeholder="zipcode"
                 onChange={(e) => setZipcode(e.target.value)}
                 />
@@ -146,11 +159,13 @@ const CreateAd = () => {
 
                 <input
                 type="text"
+                value={city}
                 placeholder="city"
                 onChange={(e) => setCity(e.target.value)}
                 />
 
 <button onClick={handleClick}>Publish</button>
+<button>Uppdatera</button>
               
 
         </form>
