@@ -10,20 +10,20 @@ const CreateAd = () => {
 
     const { currentUser } = useContext(AuthContext);
 
-    const state = useLocation().state;
+  
+  
 
-
-    const [title, setTitle] = useState(state?.title || "");
-    const [description, setDescription] = useState(state?.description || "");
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
-    const [category, setCategory] = useState(state?.category || "");
-    const [street, setStreet] = useState(state?.street || "");
-    const [zipcode, setZipcode] = useState(state?.zipcode || "");
-    const [city, setCity] = useState(state?.city || "");
+    const [category, setCategory] = useState("");
+    const [street, setStreet] = useState("");
+    const [zipcode, setZipcode] = useState("");
+    const [city, setCity] = useState("");
     
  
     
-    const date = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
+
 
     
            
@@ -52,7 +52,7 @@ const CreateAd = () => {
         console.log(title)
         console.log(description)
         console.log(imgUrl)
-        console.log(date)
+      
         console.log(category)
         console.log(street)
         console.log(zipcode)

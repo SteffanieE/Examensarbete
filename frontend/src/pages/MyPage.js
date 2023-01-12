@@ -11,7 +11,17 @@ const MyPage = () => {
     const { currentUser, logout } = useContext(AuthContext);
     const [ads, setAds] = useState([]);
     const id = currentUser.id;
-  
+
+
+    
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [street, setStreet] = useState("");
+    const [zipcode, setZipcode] = useState("");
+    const [city, setCity] = useState("");
+
+    
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,6 +33,7 @@ const MyPage = () => {
                 });
 
                 setAds(res.data);
+          
                 console.log(res)
             } catch (err) {
                 console.log(err);
@@ -47,30 +58,93 @@ const MyPage = () => {
         }      
     }
 
+    const handleUpdate = async ( adId ) => {
+        
+        
+
+         
+        console.log(title)
+     
+    
+        try {
+           await axios.put(`/ads/${adId}`, {
+                title,
+                description,
+                street,
+                zipcode,
+                city,
+
+            });
+            window.location.reload(false);
+            
+              
+        } catch (err) {
+          console.log(err);
+        }
+      };
+    
+
      
      return (
        <div>
            <h1>MINA SIDOR</h1>
            <span onClick={logout}>Logga ut</span>
+           
         
             <div className="adss">
                 {ads.map((ad) => (
                     <div className="ad" key={ad.id}>
-                        {/*  <div className="img">
-                            <img src={`../upload/${ad.img-url}`} alt="" />
-                        </div> */}
-                        <p>{ad.date}</p>
+
+                        <p>{ad.title}</p>
+                        <input
+                            type="text"
+                            placeholder="Rubrik"
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                     
+                    
+              
                     
                         <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
                         <div className="img">
                             <img src={`../upload/${ad.img_url}`} alt="" />
                         </div>
                         <p>{ad.category}</p>
-                        <p>{ad.city}</p>
+                       
+                  
                         <div className="content">
-                            <p>{getText(ad.description)}</p>           
-                            <button onClick={() => handleDelete(ad.id)}>Radera</button>
+                            <p>{getText(ad.description)}</p> 
+                            <textarea
+                            type="text"
+                            placeholder= {ad.description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            />          
+                        
                         </div>
+                        <h3>Hämtnings adress:</h3>
+
+                        
+                        <p>{ad.street}</p>
+                        <p>{ad.zipcode}</p>
+                        <p>{ad.city}</p>
+                        <input
+                            type="text"
+                            placeholder="Adress"
+                            onChange={(e) => setStreet(e.target.value)}
+                        />
+                         <input
+                            type="text"
+                            placeholder="Postnummer"
+                            onChange={(e) => setZipcode(e.target.value)}
+                        />
+                         <input
+                            type="text"
+                            placeholder="Ort"
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+                            <button onClick={() => handleUpdate(ad.id)}>Uppdatera annons</button>
+                            <button onClick={() => handleDelete(ad.id)}>Radera</button>
+                        <li />
                     </div>
                 ))}
             </div>     
