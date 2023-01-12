@@ -52,12 +52,24 @@ const MyPage = () => {
         }      
     }
 
+    const handleUserDelete = async (userId) =>{
+        console.log(userId)
+        try {
+            const res = await axios.delete(`/auth/${userId}`);
+           
+            console.log(res)
+            } catch (err) {
+            console.log(err);
+        }      
+    }
+
 
      
      return (
        <div>
            <h1>MINA SIDOR</h1>
            <span onClick={logout}>Logga ut</span>
+           <button onClick={() => handleUserDelete(id)}>Ta bord användare</button>
            
         
             <div className="adss">

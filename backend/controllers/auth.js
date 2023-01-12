@@ -69,3 +69,16 @@ export const logout = (req, res) => {
     secure:true
   }).status(200).json("User has been logged out.")
 };
+
+export const deleteUser = (req, res) => {
+
+  const userId = req.params.id;
+  const q = "DELETE FROM users WHERE `id` = ?";
+
+  db.query(q, [userId], (err, data) => {
+    if (err) return res.status(403).json("User not deleted");
+
+    return res.json("User has been deleted!");
+  });
+  
+};
