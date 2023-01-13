@@ -88,3 +88,19 @@ export const updateAd = (req, res) => {
     return res.json("The ad has been updated!");
   });
 }; 
+
+
+
+
+export const getAdsCategory = (req, res) => {
+
+  const query = req.query.category
+  ? "SELECT * FROM ads WHERE category = ?"
+  : "SELECT * FROM ads";
+  
+  db.query(query, [req.query.category], (err, data) => {
+    if (err) return res.status(500).send(err);
+
+    return res.status(200).json(data);
+  });
+};

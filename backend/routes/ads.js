@@ -4,12 +4,14 @@ import {
   getAd,
   postAd,
   deleteAd, 
-  updateAd
+  updateAd,
+  getAdsCategory
 } from "../controllers/ad.js";
 
 const router = express.Router();
 
 router.get("/", getAds);
+router.get("/category", getAdsCategory);
 router.get("/:id", getAd);
 router.post("/", postAd);
 router.delete("/:id", deleteAd);

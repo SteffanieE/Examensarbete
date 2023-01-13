@@ -13,6 +13,7 @@ import CreateAd from './pages/CreateAd';
 import NotFound from './pages/NotFound';
 import MyPage from './pages/MyPage';
 import UpdateAd from './pages/UpdateAd';
+import Category from './pages/Category';
 
 function App() {
 
@@ -25,14 +26,18 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path='/loggain' element={<Login />}/>
         <Route path="/registera" element={<Register />}/>
-        {/* <Route path="/annonser" element={<Ads />}/> */}
         <Route path="/annonser" element={<Ads />}/>
+   
         <Route path='/mina-sidor' element={<MyPage />}/>
    
-        <Route path="/annonser/:id" element={<Ad />}/>
+        <Route path="/kategori/:id" element={<Category />}/>
+        <Route path="/annonser/:id/" element={<Ad />}/>
+        
         <Route path="/annonser/updatera" element={<UpdateAd />}/>
         <Route path="/skapa" element={<CreateAd />}/>
         <Route path="*" element={<NotFound />}/>
+        
+      
       </Routes>
       <Footer />
 
