@@ -1,114 +1,88 @@
 import React from 'react'
-import { useEffect, useState  } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom"
 import moment from "moment";
+import AdsList from '../components/AdsList';
 import axios from '../api/axios';
 
 
-const Ads = () => {
+const Ads = ({ads}) => {
 
-   const [ads, setAds] = useState([]);
-   const [activeCategory, setActiveCategory] = useState("");
-
- /*   const location = useLocation();
-   const category = location.pathname.split("/")[2];
- */
-
- /*   const category = useLocation()
-   const redirect = category.pathname + category.search
-   console.log(category); */
-    console.log(activeCategory)
-    useEffect(() => {    
-      
-    
-
-      const fetchData = async () => {
-        try {
-          console.log("hämtAR")
-          const res = await axios.get(`/ads`);
-          setAds(res.data);
-          console.log(res)
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      fetchData();
-    },[]);
-
-    
-    const getText = (html) =>{
-      const doc = new DOMParser().parseFromString(html, "text/html")
-      return doc.body.textContent
-    }
+  const [newAds, setNewAds] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("");
 
 
-    const handleChange = (e) =>{
-      e.preventDefault()
-      const value = e.target.value
-      setActiveCategory(e.target.value)
-      console.log(value)
-    }
-    
+
+  const location = useLocation();
+ 
+  console.log(location);
+
+
+
+
+  const menuItems = [...new Set(ads.map((ad) => ad.category))];
+  console.log (menuItems)
+
+  const filterAds = (e) => {
+    e.preventDefault()
+    const value = e.target.value
+    const newItems = ads.filter(ad  => ad.category === value)
+    setActiveCategory(value)
+    setNewAds(newItems);
+  };
+
+
+  
+
+
+
   return (
     <div>
       <h1>All Ads</h1>
-
       
       
       <select
             value={activeCategory}
-            onChange={handleChange}
+            onChange={filterAds}
             name=""
             id="categories"
       >
-        <option value="">Alla</option>
-        <option value="clothes">Kläder</option>
-        <option value="food">Mat</option>
-        <option value="furniture">Inredning</option>
+
+      {menuItems.map((category, id) => {
+        return (
+        
+        <option value={category} key={id}>
+          {category}
+        </option>
+        )
+      })}
+
+      <option value="">Alla</option>
       </select>
 
-      
-      
-      <Link to="/kategori/food">Mat</Link>
-      <Link to="/kategori/furniture">Möbler</Link>
     
-      <div className="adss">
-      {activeCategory? ads.filter(ad  => ad.category === activeCategory).map((ad) => (
-          <div className="ad" key={ad.id}>
-            <Link className="link" to={`/annonser/${ad.id}`}>
-              <h1>{ad.title}</h1>
-            </Link>
-            <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
-            <div className="img">
-              <img src={`../upload/${ad.img_url}`} alt={ad.title} />
-            </div>
-            <p>{ad.category}</p>
-            <p>{ad.city}</p>
-            <p>{getText(ad.description)}</p>
-          </div>
-        ))
-
-        :
-
-        ads.map((ad) => (
-          <div className="ad" key={ad.id}>
-            <Link className="link" to={`/annonser/${ad.id}`}>
-              <h1>{ad.title}</h1>
-            </Link>
-            <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
-            <div className="img">
-              <img src={`../upload/${ad.img_url}`} alt={ad.title} />
-            </div>
-            <p>{ad.category}</p>
-            <p>{ad.city}</p>
-            <p>{getText(ad.description)}</p>
-          </div>
-        ))}
-      
+      <div className="ads">
+        {activeCategory? <AdsList ads={newAds} /> : <AdsList ads={ads} />}
       </div>
     </div>
 
   )
 }
 
+
+{/*  
+      ads.filter(ad  => ad.category === activeCategory).map((ad) => (
+          <div className="ad" key={ad.id}>
+            <Link className="link" to={`/annonser/${ad.id}`}>
+              <h1>{ad.title}</h1>
+            </Link>
+            <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
+            <div className="img">
+              <img src={`../upload/${ad.img_url}`} alt={ad.title} />
+            </div>
+            <p>{ad.category}</p>
+            <p>{ad.city}</p>
+            <p>{getText(ad.description)}</p>
+          </div>
+        )) */}
 export default Ads

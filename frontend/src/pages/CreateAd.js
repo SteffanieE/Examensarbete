@@ -133,9 +133,9 @@ const CreateAd = () => {
                
               
                 <select name="categories" value={category} id="categories"  onChange={(e) => setCategory(e.target.value)}>
-                    <option value="clothes">Kläder</option>
-                    <option value="food">Mat</option>
-                    <option value="furniture">Inredning</option>
+                    <option value="kläder">Kläder</option>
+                    <option value="mat">Mat</option>
+                    <option value="inredning">Inredning</option>
                    
                 </select> 
 
