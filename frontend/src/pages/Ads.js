@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom"
 import moment from "moment";
 import AdsList from '../components/AdsList';
+import FavoriteAds from '../components/FavoriteAds';
 import axios from '../api/axios';
 
 
@@ -40,6 +41,7 @@ const Ads = ({ads}) => {
     <div>
       <h1>All Ads</h1>
       
+      <FavoriteAds />
       
       <select
             value={activeCategory}

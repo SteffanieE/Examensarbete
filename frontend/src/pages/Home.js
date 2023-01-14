@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import AdsList from '../components/AdsList';
+import FavoriteAds from '../components/FavoriteAds';
+
 
 const Home = ({ads}) => {
 
@@ -13,6 +14,9 @@ const Home = ({ads}) => {
   return (
     <div>
         <div>Home</div>
+
+        <FavoriteAds />
+
        { menuItems.map((category, id) => {
           return (
             <Link
