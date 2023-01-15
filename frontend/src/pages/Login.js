@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.js";
 
 
@@ -37,6 +37,8 @@ const Login = () => {
           <input required type="text" placeholder='Email...' name="email" value={inputs.email} onChange={handleChange} />
           <input type="password" placeholder='Lösenord...' name="password" value={inputs.password} onChange={handleChange} />
           <button onClick={handleSubmit}>Logga in</button>
+
+          <li> <Link to="/registera">Register</Link></li>
           {error && <p> {error}</p>}
       </div>
   )

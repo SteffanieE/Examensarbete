@@ -1,74 +1,51 @@
 import React from 'react'
-import { useState, useEffect, useRef } from 'react';
+import { useContext } from 'react';
+import { Link, useLocation } from "react-router-dom"
+import moment from "moment";
+import { FaHeart } from 'react-icons/fa';
 
-import ItemList from './ItemList';
-import AddItem from './AddItem';
+import { FavoriteListContext } from '../context/FavoriteListContext';
 
 const FavoriteAds = () => {
 
-    const [items, setItems] = useState(JSON.parse(localStorage.getItem 
-        ('shoppinglist')) || []);
-        const [newItem, setNewItem] = useState('');
-            
-      
-      
-        useEffect(() => {
-          localStorage.setItem('shoppinglist', JSON.stringify(items));
-        }, [items])
-      
-       
-        console.log(items)
-        const addItem = (item) => {
-          const id = items.length ? items[items.length - 1].id + 1 : 1;
-          const myNewItem = { id, checked: false, item};
-          const listItems = [...items, myNewItem];
-          setItems(listItems);
-        }
-      
-        const handleCheck = (id) => {
-          const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked
-          } : item);
-          
-          
-          setItems(listItems);
-        }
-      
-      //Funktion för att ta bort item i listan genom att filtera bort alla med icke matchande id. Skickar sedan tillbaka listan med setItems
-        const handleDelete = (id) => {
-          const listItems = items.filter((item) => item.id !== id );
-          setItems(listItems);
-        }
-       
-      
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!newItem) return;
-        addItem(newItem);
-        setNewItem('');
-      }
+  const {cartItems, addItem}  = useContext(FavoriteListContext)
+ 
+ // console.log(cartItems)
   return (
     <div>
-            <h1>Sparade annonaser</h1>
+      <h1>Sparade annonaser</h1>
 
-            <AddItem 
-                newItem={newItem}
-                setNewItem={setNewItem}
-                handleSubmit={handleSubmit}
-            /> 
-        
+    
+        <ul>
+            
+
+
                 
-            {items.length ? (
+            {cartItems.map((ad) => (
+           <div className="ad" key={ad.id}>
+             <Link className="link" to={`/annonser/${ad.id}`}>
+               <p>{ad.title}</p>
+             </Link>
+             {/* <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
+             <div className="img">
+               <img src={`../upload/${ad.img_url}`} alt={ad.title} />
+             </div> 
+             <p>{ad.category}</p>
+             <p>{ad.city}</p>
+            */}
+            <button onClick={(e) => {e.preventDefault(); addItem(ad)}}>
+             <FaHeart />
+            </button>
+           </div>
 
-                <ItemList
-                    items={items}
-                    handleCheck={handleCheck}
-                    handleDelete={handleDelete}
-                />
-                ) : (
-                <p style={{marginTop: '2rem'}}> Your list are empty!</p>
-                )}
-                        </div>
-                    );
+           
+         ))}
+        </ul>
+    
+
+
+    </div>
+  );
   
 }
 

@@ -10,8 +10,12 @@ export const AuthContexProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
+    JSON.parse(localStorage.getItem('user')) || null
   );
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(currentUser));
+  }, [currentUser]);
 
   const login = async (inputs) => {
     const res = await axios.post("/auth/login", inputs);
@@ -20,17 +24,35 @@ export const AuthContexProvider = ({ children }) => {
   };
 
   const logout = async (inputs) => {
-    await axios.post("/auth/logout");
+    // await axios.post("/auth/logout");
     setCurrentUser(null);
     navigate("/")
   };
 
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(currentUser));
-  }, [currentUser]);
+  const deleteUser = async (userId) =>{
+    console.log(userId)
+
+   
+    try {
+       
+        const res = await axios.delete(`/auth/${userId}`);
+ 
+        navigate("/")
+        console.log(res)
+        } catch (err) {
+        console.log(err);
+
+        
+    }  
+    
+    setCurrentUser(null);
+  }
+
+
+
 
   return (
-    <AuthContext.Provider value={{ currentUser, login, logout }}>
+    <AuthContext.Provider value={{ currentUser, login, logout, deleteUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -16,6 +16,7 @@ import NotFound from './pages/NotFound';
 import MyPage from './pages/MyPage';
 import UpdateAd from './pages/UpdateAd';
 import Category from './pages/Category';
+import FavoriteAds from './components/FavoriteAds';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
     <div className="App">
     
       <Navbar />
+      <FavoriteAds />
       <Routes>
         <Route path="/" element={<Home ads={ads} />}/>
         <Route path='/loggain' element={<Login />}/>
@@ -60,7 +62,7 @@ function App() {
         <Route path="/annons/:id" element={<Ad />}/>
         
         <Route path="/annonser/updatera" element={<UpdateAd />}/>
-        <Route path="/skapa" element={<CreateAd />}/>
+        <Route path="/annonser/skapa" element={<CreateAd />}/>
         <Route path="*" element={<NotFound />}/>
         
       
