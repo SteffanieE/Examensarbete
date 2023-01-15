@@ -1,10 +1,9 @@
 import './App.css';
-//import axios from "axios";
-//import { useState } from 'react';
+
 import axios from './api/axios';
 import { useEffect, useState  } from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
+
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -16,7 +15,8 @@ import NotFound from './pages/NotFound';
 import MyPage from './pages/MyPage';
 import UpdateAd from './pages/UpdateAd';
 import Category from './pages/Category';
-import FavoriteAds from './components/FavoriteAds';
+
+import Header from './components/Header';
 
 function App() {
 
@@ -46,9 +46,9 @@ function App() {
 
   return (
     <div className="App">
-    
-      <Navbar />
-      <FavoriteAds />
+      <Header />
+     
+
       <Routes>
         <Route path="/" element={<Home ads={ads} />}/>
         <Route path='/loggain' element={<Login />}/>
@@ -64,8 +64,6 @@ function App() {
         <Route path="/annonser/updatera" element={<UpdateAd />}/>
         <Route path="/annonser/skapa" element={<CreateAd />}/>
         <Route path="*" element={<NotFound />}/>
-        
-      
       </Routes>
       <Footer />
 

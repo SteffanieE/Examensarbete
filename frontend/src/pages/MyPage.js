@@ -1,7 +1,9 @@
 import React from 'react'
 import { useEffect, useState, useContext  } from "react";
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom";
+
 import { AuthContext } from "../context/AuthContext.js";
+import { FavoriteListContext } from '../context/FavoriteListContext';
 import moment from "moment";
 import axios from '../api/axios';
 
@@ -9,6 +11,7 @@ import axios from '../api/axios';
 const MyPage = () => {
 
     const { currentUser, logout, deleteUser } = useContext(AuthContext);
+    const {cartItems, addItem}  = useContext(FavoriteListContext)
     const [ads, setAds] = useState([]);
     const id = currentUser.id;
 
@@ -61,6 +64,7 @@ const MyPage = () => {
            <span onClick={logout}>Logga ut</span>
            <button onClick={() => deleteUser(id)}>Ta bord användare</button>
            
+           <h2>Mina annonser</h2>
         
             <div className="adss">
                 {ads.map((ad) => (
@@ -80,7 +84,31 @@ const MyPage = () => {
                         <button onClick={() => handleDelete(ad.id)}>Radera</button> 
                     </div>
                 ))}
-            </div>     
+            </div>  
+
+            <h2>Sparade annonser</h2>  
+  
+            
+            <div className="adss">
+                {cartItems.map((ad) => (
+                    <div className="ad" key={ad.id}>                        
+                        <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
+                        <div className="img">
+                            <img src={`../upload/${ad.img_url}`} alt="" />
+                        </div>
+                        <p>{ad.category}</p> 
+                        <h1>{ad.title}</h1>                 
+                        <p>{getText(ad.description)}</p> 
+                        <h3>Hämtnings adress:</h3>
+                        <p>{ad.street}</p>
+                        <p>{ad.zipcode}</p>
+                        <p>{ad.city}</p>
+                        <Link to={`/skapa?edit=2`} state={ad}>Uppdatera</Link>    
+                        <button onClick={() => handleDelete(ad.id)}>Radera</button> 
+                    </div>
+                ))}
+            </div>  
+            
        </div>
           
      )

@@ -3,26 +3,18 @@ import { Link } from "react-router-dom";
 import { AuthContext } from '../context/AuthContext';
 import { FavoriteListContext } from '../context/FavoriteListContext';
 
+
 const Navbar = () => {
-  const { currentUser, logout } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   const {cartItems}  = useContext(FavoriteListContext)
 
-
-   return (
+  return (
     <div> 
-      
-        <ul>
-
-            <li> <Link to="/">Hem</Link></li>
-            <li> <Link to="/annonser">Annonser</Link></li>
-          
+        <ul> 
             <li> {currentUser? <Link to="/mina-sidor">Mina Sidor</Link> : <Link to="/loggain">Logga in / Registera</Link> }</li>
-        
-           
-            <span>{cartItems.length}</span>
-            
-        </ul>
-        
+            <li> <Link to="/annonser/skapa">Skapa annons</Link></li>
+            <li><span>{cartItems.length}</span></li>
+        </ul>  
     </div>
   )
 }
