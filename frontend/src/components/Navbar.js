@@ -2,20 +2,25 @@ import React, { useContext } from 'react'
 import { Link } from "react-router-dom";
 import { AuthContext } from '../context/AuthContext';
 import { FavoriteListContext } from '../context/FavoriteListContext';
-
+import {TbCameraPlus, TbUserCircle } from "react-icons/tb";
 
 const Navbar = () => {
+
   const { currentUser } = useContext(AuthContext);
-  const {cartItems}  = useContext(FavoriteListContext)
+  const { cartItems } = useContext(FavoriteListContext)
 
   return (
-    <div> 
-        <ul> 
-            <li> {currentUser? <Link to="/mina-sidor">Mina Sidor</Link> : <Link to="/loggain">Logga in / Registera</Link> }</li>
-            <li> <Link to="/annonser/skapa">Skapa annons</Link></li>
-            <li><span>{cartItems.length}</span></li>
-        </ul>  
-    </div>
+    <ul className="primary-navigation underline-indicators flex">
+      <li>
+        <Link className="text-dark" to="/annonser/skapa"><TbCameraPlus size="30px" strokeWidth="1" />Skapa annons</Link>
+      </li>
+      <li> {currentUser
+        ? <Link className="text-dark" to="/mina-sidor"><TbUserCircle size="30px" strokeWidth="1" />Mina Sidor</Link>
+        : <Link className="text-dark" to="/loggain"><TbUserCircle size="30px" strokeWidth="1" />Registera / logga in</Link>}
+      </li>
+     
+      {/* <li className="text-dark letter-spacing-1"><span>{cartItems.length}</span></li> */}
+    </ul>
   )
 }
 

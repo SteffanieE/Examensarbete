@@ -6,11 +6,11 @@ const Home = ({ads}) => {
   
   
   return (
-    <div>
+    <main className='container'>
         <div>
           <li> <Link to="/annonser">Annonser</Link></li>
         </div>      
-    </div>
+    </main>
 
   )
 

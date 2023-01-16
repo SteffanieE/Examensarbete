@@ -1,14 +1,18 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import Navbar from './Navbar'
+import logo from '../images/logo.png'
+
 
 
 const Header = () => {
-    
+
   return (
-    <header>
-        <Link to="/">Logo</Link>
-        <Navbar />
+    <header className="primary-header flex">
+      <Navbar />
+      <div className='container'>
+        <Link to="/"><img src={logo} alt='logo' height="90%" /></Link>
+      </div>
     </header>
   )
 }
