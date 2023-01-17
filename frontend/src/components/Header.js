@@ -11,7 +11,7 @@ const Header = () => {
     <header className="primary-header flex">
       <Navbar />
       <div className='container'>
-        <Link to="/"><img src={logo} alt='logo' height="90%" /></Link>
+        <Link to="/"><img src={logo} alt='logo' /></Link>
       </div>
     </header>
   )
