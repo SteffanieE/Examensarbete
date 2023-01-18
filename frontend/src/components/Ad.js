@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import {useState, useEffect, useContext} from 'react'
 import { Link, useLocation } from "react-router-dom"
 import moment from "moment";
@@ -11,15 +11,12 @@ const Ad = ({ad}) => {
 
 
 
-  const getText = (html) =>{
-    const doc = new DOMParser().parseFromString(html, "text/html")
-    return doc.body.textContent
-  }
+  
 
  
   return (
     <div className="ad" key={ad.id}>
-          <Link className="link" to={`/annons/${ad.id}`}>
+          <Link className="link" to={`/annonser/${ad.id}`}>
             <h1>{ad.title}</h1>
           </Link>
           <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
@@ -28,7 +25,7 @@ const Ad = ({ad}) => {
           </div>
           <p>{ad.category}</p>
           <p>{ad.city}</p>
-          <p>{getText(ad.description)}</p>
+          
          
           <button
             
@@ -42,4 +39,4 @@ const Ad = ({ad}) => {
   )
 }
 
-export default Ad
+export default Ad */

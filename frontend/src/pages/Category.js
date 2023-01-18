@@ -17,7 +17,7 @@ const Category = () => {
     const location = useLocation();
     const category = location.pathname.split("/")[2];
 
- 
+  console.log(category)
 
 
 
@@ -68,7 +68,7 @@ const Category = () => {
        
          {ads.map((ad) => (
            <div className="ad" key={ad.id}>
-             <Link className="link" to={`/annonser/${ad.id}`}>
+             <Link className="link" to={`/annonser/${ad.category}/${ad.id}`}>
                <h1>{ad.title}</h1>
              </Link>
              <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>

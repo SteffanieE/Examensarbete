@@ -37,7 +37,7 @@ const Ad = () => {
     fetchData();
   }, [AdId]);
 
-console.log(ad.user_id)
+console.log(ad)
 console.log(currentUser.id)
 
   return (

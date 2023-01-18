@@ -12,11 +12,12 @@ const Ads = ({ads}) => {
   const [newAds, setNewAds] = useState([]);
   const [activeCategory, setActiveCategory] = useState("");
 
+  
 
 
   const location = useLocation();
  
- // console.log(location);
+ console.log(location);
 
 
 

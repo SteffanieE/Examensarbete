@@ -54,15 +54,17 @@ function App() {
         <Route path='/loggain' element={<Login />}/>
         <Route path="/registera" element={<Register />}/>
         <Route path="/annonser" element={<Ads ads={ads}/>}/>
-        <Route path="/annonser/:id" element={<Ads ads={ads}/>}/>
-   
-        <Route path='/mina-sidor' element={<MyPage />}/>
-   
-        <Route path="/kategori/:id" element={<Category />}/>
-        <Route path="/annons/:id" element={<Ad />}/>
-        
+    
+        <Route path="/annonser/:id" element={<Ad />}/>
         <Route path="/annonser/updatera" element={<UpdateAd />}/>
         <Route path="/annonser/skapa" element={<CreateAd />}/>
+       
+        <Route path='/mina-sidor' element={<MyPage />}/>
+   
+        
+
+        
+      
         <Route path="*" element={<NotFound />}/>
       </Routes>
       <Footer />
