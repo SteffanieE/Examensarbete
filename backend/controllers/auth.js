@@ -23,7 +23,7 @@ export const register = (req, res) => {
   
       db.query(query, [values], (err, data) => {
         if (err) return res.status(500).json(err);
-        return res.status(200).json("A new user is now registered");
+        return res.status(200).json("Hittar ingen registerad användare");
       });
     });
 }
@@ -35,7 +35,7 @@ export const login = (req, res) => {
 
   db.query(q, [req.body.email], (err, data) => {
     if (err) return res.status(500).json(err);
-    if (data.length === 0) return res.status(404).json("User not found!");
+    if (data.length === 0) return res.status(404).json("Hittar ingen användare!");
    
     //Check password
     const isPasswordCorrect = bcrypt.compareSync(
@@ -44,7 +44,7 @@ export const login = (req, res) => {
     );
 
     if (!isPasswordCorrect)
-      return res.status(400).json("Wrong username or password!");
+      return res.status(400).json("Felaktigt användarnamn eller lösenord!");
 
     const token = jwt.sign({ email: data[0].id }, "jwtkey");
    

@@ -32,15 +32,29 @@ const Login = () => {
     };
 
   return (
-      <div>
-          <h1>Logga in</h1>
-          <input required type="text" placeholder='Email...' name="email" value={inputs.email} onChange={handleChange} />
-          <input type="password" placeholder='Lösenord...' name="password" value={inputs.password} onChange={handleChange} />
-          <button onClick={handleSubmit}>Logga in</button>
+      <main className="container login-page bg-accent">
+        <section className="login-container bg-white">
+          <section className="signup-part">
+            <h1 className="fs-500">Skapa konto</h1>
+            <Link className="text-dark">Skapa konto med Google</Link>
+            <p>eller</p>
+            <Link className="text-dark" to="/registera">Register</Link>
+            <p className="fs-200">Genom att registera mig godkänner jag 
+            Återbruket.se användarvillkor</p>
+          </section>
 
-          <li> <Link to="/registera">Register</Link></li>
-          {error && <p> {error}</p>}
-      </div>
+          <section className="login-part">
+            <h1 className="fs-500">Logga in</h1>
+            <Link>Google</Link>
+            <p>eller</p>
+            <input required type="text" placeholder='Email...' name="email" value={inputs.email} onChange={handleChange} />
+            <input required type="password" placeholder='Lösenord...' name="password" value={inputs.password} onChange={handleChange} />
+            <button className="large-button-primary" onClick={handleSubmit}>Logga in</button>
+            {error && <p> {error}</p>}
+          </section>
+        </section>
+      
+      </main>
   )
 }
 
