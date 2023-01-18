@@ -51,7 +51,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home ads={ads} />}/>
-        <Route path='/loggain' element={<Login />}/>
+        <Route path='/login' element={<Login />}/>
         <Route path="/registera" element={<Register />}/>
         <Route path="/annonser" element={<Ads ads={ads}/>}/>
     

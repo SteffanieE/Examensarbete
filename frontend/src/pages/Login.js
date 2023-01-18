@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.js";
+import './Login.css';
 
 
 const Login = () => {
@@ -38,7 +39,7 @@ const Login = () => {
             <h1 className="fs-500">Skapa konto</h1>
             <Link className="text-dark">Skapa konto med Google</Link>
             <p>eller</p>
-            <Link className="text-dark" to="/registera">Register</Link>
+            <Link className="text-white bg-dark" to="/registera">Registera utan google</Link>
             <p className="fs-200">Genom att registera mig godkänner jag 
             Återbruket.se användarvillkor</p>
           </section>
@@ -47,8 +48,8 @@ const Login = () => {
             <h1 className="fs-500">Logga in</h1>
             <Link>Google</Link>
             <p>eller</p>
-            <input required type="text" placeholder='Email...' name="email" value={inputs.email} onChange={handleChange} />
-            <input required type="password" placeholder='Lösenord...' name="password" value={inputs.password} onChange={handleChange} />
+            <input type="text" placeholder='Email...' name="email" value={inputs.email} onChange={handleChange} />
+            <input type="password" placeholder='Lösenord...' name="password" value={inputs.password} onChange={handleChange} />
             <button className="large-button-primary" onClick={handleSubmit}>Logga in</button>
             {error && <p> {error}</p>}
           </section>

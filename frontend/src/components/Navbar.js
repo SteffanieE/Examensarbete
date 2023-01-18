@@ -16,7 +16,7 @@ const Navbar = () => {
       </li>
       <li> {currentUser
         ? <Link className="text-dark" to="/mina-sidor"><TbUserCircle size="30px" strokeWidth="1" />Mina Sidor</Link>
-        : <Link className="text-dark" to="/loggain"><TbUserCircle size="30px" strokeWidth="1" />Registera / logga in</Link>}
+        : <Link className="text-dark" to="/login"><TbUserCircle size="30px" strokeWidth="1" />Registera / logga in</Link>}
       </li>
      
       {/* <li className="text-dark letter-spacing-1"><span>{cartItems.length}</span></li> */}
