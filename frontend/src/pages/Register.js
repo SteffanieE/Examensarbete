@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from '../api/axios';
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import './Register.css';
 
 
 
@@ -32,28 +33,22 @@ const Register = () => {
     }
     
     return (
-        <div>
-            <div>
-                <h1>Registera</h1>
-                <form>
+        <main className="register-page bg-accent">
+            <section className="register-container bg-white">
+                <h1>Skapa nytt konto</h1>
+                <form onSubmit={handelSubmit}>
                     <label>Email</label>
-                    <input 
-                    type="text"
-                    name='email' 
-                    onChange={handelChange} />
+                    <input type="text" name='email' onChange={handelChange} required />
                     <label>Lösenord</label>
-                    <input 
-                    type="text"
-                    name='password'  
-                    onChange={handelChange} 
-                    />
-         
-                    <button onClick={handelSubmit}>Registera</button>
-                    {error && <p> {error}</p>}
+                    <input type="text" name='password' onChange={handelChange} required />
+                    <button className="large-button-primary" type="submit">Registera</button>
+                    <p className="fs-200">Genom att registera mig godkänner jag</p>
+                    <p className="fs-200"> Återbruket.se användarvillkor</p>
+                    {error && <p className='error-message'> {error}</p>}
                 </form>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 
-export default Register
+export default Register;

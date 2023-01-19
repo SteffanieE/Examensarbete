@@ -4,13 +4,15 @@
     margin: auto;
     padding-top: 150px;
     padding-bottom: 100px;
+    padding-inline: 2em;
+    margin-inline: auto;
 }
   
 .login-container{
     position: relative;
     display: flex;
     flex-direction: column;
-    border: 2px solid rgb( var(--clr-light-green) );
+    /* border: 2px solid rgb( var(--clr-light-green) ); */
     margin: auto;
     min-height: 470px;
     border-radius: 10px;

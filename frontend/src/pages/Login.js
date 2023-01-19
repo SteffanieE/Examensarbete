@@ -33,13 +33,13 @@ const Login = () => {
     };
 
   return (
-      <main className="container login-page bg-accent">
+      <main className=" login-page bg-accent">
         <section className="login-container bg-white">
           <section className="signup-part">
             <h1 className="fs-500">Skapa konto</h1>
             <Link className="text-dark">Skapa konto med Google</Link>
             <p>eller</p>
-            <Link className="text-white bg-dark" to="/registera">Registera utan google</Link>
+            <Link className="text-white bg-dark" to="/skapa-konto">Skapa konto utan google</Link>
             <p className="fs-200">Genom att registera mig godkänner jag 
             Återbruket.se användarvillkor</p>
           </section>
@@ -54,7 +54,6 @@ const Login = () => {
             {error && <p> {error}</p>}
           </section>
         </section>
-      
       </main>
   )
 }
