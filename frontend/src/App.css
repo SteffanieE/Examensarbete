@@ -234,6 +234,44 @@ li{
 
 
 
+.medium-button-primary {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  border-radius: 2px;
+  place-items: center;
+  padding: .75em 2em;
+  text-decoration: none;
+  color: rgb( var(--clr-white ) );
+  background-color: rgb( var(--clr-dark) );
+}
+
+
+.medium-button-primary:hover {
+  opacity: 0.8;
+}
+
+
+.small-button-primary {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  width: 40px;
+  border-radius: 2px;
+  place-items: center;
+
+  text-decoration: none;
+  color: rgb( var(--clr-white ) );
+  background-color: rgb( var(--clr-dark) );
+}
+
+
+.small-button-primary:hover {
+  opacity: 0.8;
+}
+
+
 
 .underline-indicators > * {
 
@@ -367,11 +405,16 @@ li{
 
 
 .error-message{
-
   margin-top: 20px;
   color: red;
-
 }
+
+
+
+
+
+
+
 
   /* For tablets: */
   

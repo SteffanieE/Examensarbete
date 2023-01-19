@@ -1,0 +1,33 @@
+.my-page{
+    position: relative;
+    margin: auto;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.my-page section{
+    border: 2px solid goldenrod;
+}
+
+.my-ads-tabel{
+    border: 2px solid greenyellow;
+   
+}
+
+table, th {  
+    border-bottom: 2px solid rgb( var(--clr-light-green) );
+    text-align: left;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 5px;
+  }

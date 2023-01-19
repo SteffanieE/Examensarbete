@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom"
 import moment from "moment";
 import { FaHeart } from 'react-icons/fa';
 import { FavoriteListContext } from '../context/FavoriteListContext';
+import { AuthContext } from "../context/AuthContext.js";
 
 const AdsList = ({ads}) => {
   
@@ -12,7 +13,8 @@ const AdsList = ({ads}) => {
     return doc.body.textContent
   } */
 
-  const {cartItems, addItem} = useContext(FavoriteListContext)
+  const {cartItems, addItem} = useContext(FavoriteListContext);
+  const { currentUser } = useContext(AuthContext);
 
 
   
@@ -40,13 +42,23 @@ const AdsList = ({ads}) => {
               <p className='uppercase'>{ad.city}</p> 
               <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
             </div>
-            <Link className="link text-dark" to={`/annonser/${ad.id}`}>
-              <h1>{ad.title}</h1>
-            </Link>
+            <h1>{ad.title}</h1>
+          
             
             {/* <p>{getText(ad.description)}</p> */}
-          
-            <button>Mer info</button>
+              
+            {currentUser === null? 
+              
+              <Link className="link text-dark" to={`/login`}>Loga in för mer info</Link>
+             
+              
+           
+            :  
+              <Link className="link text-dark" to={`/annonser/${ad.id}`}>MER INFO</Link>
+              
+            
+          }
+            
 
           </li>
           

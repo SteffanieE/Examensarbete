@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Popup from 'reactjs-popup';
 import axios from '../api/axios';
 
 import { AuthContext } from "../context/AuthContext.js";
@@ -49,21 +50,31 @@ console.log(currentUser.id)
       <p>{ad.img_url}</p>
       <p>{ad.category}</p>
       <p>{ad.city}</p>
-            <div className="content">
-             
-              <p>{getText(ad.description)}</p>
-            
-            </div>
-            {currentUser.id === ad.user_id && (
-            <div className="edit">
-              <Link to={`/skapa?edit=2`} state={ad}>
-                Uppdatera
-              </Link>
-              {/* <img onClick={handleDelete} src={Delete} alt="" /> */}
-            </div>
-          )}
 
 
+    
+
+
+      
+      <div className="content">
+        
+        <p>{getText(ad.description)}</p>
+      
+      </div>
+      
+      <Popup trigger={<button>HÄMTA</button>} position="top left">
+        {close => (
+          <div>
+          <p>Varan finns på följande adress:</p>
+            <p>{ad.city}</p>
+            <p>{ad.zipcode}</p>
+            <p>{ad.street}</p>
+            <a className="close" onClick={close}>
+              &times;
+            </a>
+          </div>
+        )}
+      </Popup>
     </div>
   )
 }
