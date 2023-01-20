@@ -10,13 +10,10 @@ import { FavoriteListProvider } from './context/FavoriteListContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <AuthContexProvider>
-        <FavoriteListProvider>
+
           <App />
-        </FavoriteListProvider>
-      </AuthContexProvider>
-    </BrowserRouter>
+   
+
   </React.StrictMode>
 );
 

@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
       <main className=" login-page bg-accent">
-        <section className="login-container bg-white">
+        <div className="login-container bg-white">
           <section className="signup-part">
             <h1 className="fs-500">Skapa konto</h1>
             <Link className="text-dark">Skapa konto med Google</Link>
@@ -53,7 +53,7 @@ const Login = () => {
             <button className="large-button-primary" onClick={handleSubmit}>Logga in</button>
             {error && <p> {error}</p>}
           </section>
-        </section>
+        </div>
       </main>
   )
 }

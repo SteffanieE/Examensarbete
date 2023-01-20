@@ -11,7 +11,7 @@ const CreateAd = () => {
     const { currentUser } = useContext(AuthContext);
 
     const state = useLocation().state;
-    console.log(state)
+   
 
     const [title, setTitle] = useState(state?.title || "");
     const [description, setDescription] = useState(state?.description || "");
@@ -20,10 +20,13 @@ const CreateAd = () => {
     const [street, setStreet] = useState(state?.street || "");
     const [zipcode, setZipcode] = useState(state?.zipcode || "");
     const [city, setCity] = useState(state?.city || "");
+    const [slug, setSlug] = useState(state?.slug || "");
     
  
+     
+    console.log(title)
+    console.log(slug)
     
-
 
     
            
@@ -41,15 +44,34 @@ const CreateAd = () => {
           console.log(err);
         }
       };
+
+      const handleChange 
+         = (e) => {
+          
+          setCategory(e.target.value)
+          const cat = e.target.value
+          const klader = "klader"
+
+            if (cat === "kläder" ) {
+            setSlug(klader) 
+          }
+          else
+          setSlug(e.target.value)
+
+          
+
+         }
+
     
       const handleClick = async (e) => {
         e.preventDefault();
         const imgUrl = await upload();
 
 
+      
 
          
-        console.log(title)
+        
         console.log(description)
         console.log(imgUrl)
       
@@ -58,6 +80,7 @@ const CreateAd = () => {
         console.log(zipcode)
         console.log(city)
         console.log(currentUser.id)
+        console.log(slug)
 
 
 
@@ -70,6 +93,7 @@ const CreateAd = () => {
               title,
               description,
               category,
+              slug,
               street,
               zipcode,
               city,
@@ -79,6 +103,7 @@ const CreateAd = () => {
                 description,
                 date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
                 category,
+                slug,
                 img_url: image ? imgUrl : "",
                 street,
                 zipcode,
@@ -132,11 +157,10 @@ const CreateAd = () => {
           
                
               
-                <select name="categories" value={category} id="categories"  onChange={(e) => setCategory(e.target.value)}>
+                <select name="categories" value={category} id="categories"  onChange={handleChange}>
                     <option value="kläder">Kläder</option>
                     <option value="mat">Mat</option>
                     <option value="inredning">Inredning</option>
-                   
                 </select> 
 
         

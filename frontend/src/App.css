@@ -71,7 +71,7 @@ body{
   min-height: 100vh;
   line-height: 1.5;
   font-family: var(--ff-sans-normal);
- /* font-size: var(--fs-400); */
+  font-size: var(--fs-400); 
   color: rgb( var(--clr-dark) );
   background-color: rgb( var(--clr-white ) );
 }
@@ -98,17 +98,6 @@ li{
   text-decoration: none;
 }
 
-/* remove animations for people who've turned them off */
-@media (prefers-reduced-motion: reduce) {  
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
 
 /* ------------------- */
 /* Utility classes     */
@@ -126,23 +115,11 @@ li{
   gap: var(--gap, 1rem);
 }
 
-.flow > *:not(:first-child) {
-  margin-top: 1rem;
-  outline: 1px solid red;
-}
-
 .container {
   padding-inline: 2em;
   margin-inline: auto;
   max-width: 80rem;
 }
-
-.box {
-  background: lightblue;
-  padding: 3rem;
-}
-
-
 
 
 
@@ -330,17 +307,13 @@ li{
   align-items: center;
 }
 
-.primary-navigation ul li {
-  
-
-  margin: 10px 30px;
-}
-
-
-/* .primary-navigation a > span {
-  font-weight: 700;
-  margin-right: .5em;
+/* Hover effect on activ link
+.primary-navigation a.active {
+  background-color: blueviolet;
 } */
+
+
+
 
 
 .hero-image {
@@ -412,8 +385,32 @@ li{
 
 
 
+  /* breadcrumbs */
 
+  .breadcrumbs{
+    max-width:1200px;
+    margin: 20px auto;
+  }
 
+  .breadcrumbs > *{
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .breadcrumbs .crumb:after{
+    content: '/';
+    margin-left: 10px;
+  }
+
+  .breadcrumbs .crumb:last-child::after{
+    display: none;
+  }
+
+  .breadcrumbs .crumb a{
+    color: blueviolet;
+    text-decoration: none;
+    
+  }
 
 
   /* For tablets: */

@@ -1,0 +1,100 @@
+.single-ad-page{
+    position: relative;
+    margin: auto;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    padding-inline: 2em;
+    margin-inline: auto;
+}
+
+
+.single-ad-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+   
+    margin: auto;
+    min-height: 470px;
+ 
+    padding: 40px;
+    max-width: 500px;
+
+}
+
+
+
+  
+.ad-img-part, 
+.ad-info-part{
+    width: 100%;
+    padding:30px;
+    text-align: left;
+}
+
+.ad-img-part img{
+    object-fit: cover;
+    height: 100%;
+}
+  
+.ad-info-part{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width:800px){
+    /* For desktop: */
+  
+    .single-ad-container{
+      flex-direction: row;
+      max-width: 800px;
+    }
+  
+    
+
+    .ad-img-part, 
+    .ad-info-part{
+        max-width: 50%; 
+    }
+   
+}
+  
+
+.popup-content {
+position: relative;
+margin: auto;
+background: rgb(255, 255, 255);
+width: 100%;
+padding: 10px;
+}
+  .popup-arrow {
+    color: rgb(255, 255, 255);
+  }
+  [role='tooltip'].popup-content {
+    width: 400px;
+    border: 2px solid rgb( var(--clr-light-green));
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+  }
+  
+  .popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  [data-popup='tooltip'].popup-overlay {
+    background: transparent;
+    }
+
+    .close{
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+    }

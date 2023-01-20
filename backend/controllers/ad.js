@@ -31,13 +31,14 @@ export const getAd = (req, res) => {
 export const postAd = (req, res) => {
     
   const q =
-    "INSERT INTO ads(`title`, `description`, `date`, `category`, `img_url`, `street`, `zipcode`, `city`, `user_id` ) VALUES (?)";
+    "INSERT INTO ads(`title`, `description`, `date`, `category`, `slug`, `img_url`, `street`, `zipcode`, `city`, `user_id` ) VALUES (?)";
 
   const values = [
     req.body.title,
     req.body.description,
     req.body.date,
     req.body.category,
+    req.body.slug,
     req.body.img_url,
     req.body.street,
     req.body.zipcode,
@@ -72,12 +73,13 @@ export const updateAd = (req, res) => {
 
   const adId = req.params.id;
   const q =
-    "UPDATE ads SET `title`=?,`description`=?,`category`=?,`street`=?,`zipcode`=?,`city`=? WHERE `id` = ?";
+    "UPDATE ads SET `title`=?,`description`=?,`category`=?,`slug`=?,`street`=?,`zipcode`=?,`city`=? WHERE `id` = ?";
     
     const values = [
       req.body.title,
       req.body.description,
       req.body.category,
+      req.body.slug,
       req.body.street,
       req.body.zipcode,
       req.body.city,
@@ -94,11 +96,11 @@ export const updateAd = (req, res) => {
 
 export const getAdsCategory = (req, res) => {
 
-  const query = req.query.category
-  ? "SELECT * FROM ads WHERE category = ?"
+  const query = req.query.slug
+  ? "SELECT * FROM ads WHERE slug = ?"
   : "SELECT * FROM ads";
   
-  db.query(query, [req.query.category], (err, data) => {
+  db.query(query, [req.query.slug], (err, data) => {
     if (err) return res.status(500).send(err);
 
     return res.status(200).json(data);

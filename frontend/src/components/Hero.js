@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
+
+
   return (
     <section className='hero-image'>
         <div className="hero-text flex text-dark">

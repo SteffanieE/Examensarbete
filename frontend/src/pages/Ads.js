@@ -7,31 +7,18 @@ import AdsList from '../components/AdsList';
 import axios from '../api/axios';
 
 
-const Ads = ({ads}) => {
+const Ads = ({ads, newAds, activeCategory, filterAds}) => {
 
-  const [newAds, setNewAds] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("");
+ 
 
   
 
 
-  const location = useLocation();
- 
- console.log(location);
-
-
+  
 
 
   const menuItems = [...new Set(ads.map((ad) => ad.category))];
   console.log (menuItems)
-
-  const filterAds = (e) => {
-    e.preventDefault()
-    const value = e.target.value
-    const newItems = ads.filter(ad  => ad.category === value)
-    setActiveCategory(value)
-    setNewAds(newItems);
-  };
 
 
   

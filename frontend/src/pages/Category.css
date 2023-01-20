@@ -1,0 +1,28 @@
+.inredning,
+.mat,
+.klader{
+    background-image: url(../images/hero-image.jpg);
+    height: 65vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    gap: 0;
+}
+
+
+
+.inredning{
+    background-image: url(../images/hero-image.jpg);
+   
+}
+
+.mat{
+    background-image: url(../images/hero-image.jpg);
+   
+}
+
+.klader{
+    background-image: url(../images/hero-image.jpg);
+ 
+}
