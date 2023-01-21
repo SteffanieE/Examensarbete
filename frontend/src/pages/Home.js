@@ -2,6 +2,7 @@ import React from 'react'
 import {  Link, NavLink } from 'react-router-dom';
 import Hero from '../components/Hero';
 import AdsList from '../components/AdsList';
+import './Home.css';
 
 
 const Home = ({ads}) => {
@@ -22,15 +23,29 @@ const Home = ({ads}) => {
   return (
     <main>
       <Hero />
-
-      <nav className="primary-navigation underline-indicators flex">
+      <div className='line-div'>
           
-          <NavLink className="text-dark" to="kategori/mat">Mat</NavLink>
-          <NavLink className="text-dark" to="/kategori/klader">Kläder</NavLink>
 
-          <NavLink className="text-dark" to="/kategori/inredning">Inredning</NavLink>
+      <h1 className=''>KATEGORIER</h1>
 
-   
+
+        
+
+
+     
+
+
+      </div>
+      <nav className="flex category-nav">
+          <div className='category-div'>
+            <NavLink className="text-dark" to="kategori/mat">Mat</NavLink>
+          </div>
+          <div className='category-div'>
+            <NavLink className="text-dark" to="/kategori/klader">Kläder</NavLink>
+          </div>
+          <div className='category-div'>
+            <NavLink className="text-dark" to="/kategori/inredning">Inredning</NavLink>
+          </div>
       </nav>
 
       
