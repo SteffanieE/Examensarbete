@@ -1,27 +1,44 @@
 .category-nav{
-    
     justify-content: center;
     padding: 30px;
-    gap: 3rem;
+    gap: 5rem;
 }
 
 .category-div{
-    display: flex;
-    flex-direction: column;
-    border: 2px solid salmon;
-    height: 100px;
-    width: 300px;
-    text-align: center;
+    height: 150px;
+    width: 400px;
     justify-content: center;
-   
-    
-    
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+
+.category-text {
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 250px;
+    background-color:white; 
+    opacity: 80%;
 }
 
 .category-div a{
     text-decoration: none;
-    
-  
+}
+
+
+.interior-link{
+    background-image: url(../images/furniture-cat-image.jpg); 
+}
+
+.food-link{
+    background-image: url(../images/food-cat-image.jpg); 
+}
+
+.clothes-link{
+    background-image: url(../images/clothes-cat-image.jpg);
 }
 
 
@@ -30,42 +47,49 @@
 
 
 
-.line-div {
-    
-}
 
 
-.line-div h1 {
 
- 
-    margin: 100px auto;
+/*----- Line and Text section divider -----*/
+
+.line-div h1 { 
+    margin: 80px auto;
     text-align: center;
-    font-size: 40px;
     position:relative;
- }
+}
 
 .line-div h1:before, 
 .line-div h1:after {
     content: "";
     display:block;
-    width: 300px;
+    width: 25%;
     height:2px;
     background: rgb( var(--clr-light-green) );
     position: absolute;
     top: 50%;
-    z-index: -2;
-  
-  }
+    z-index: -2;  
+}
 
-.line-div
-  h1:before {
+.line-div h1:before {
+    left: 0;
+}
 
-left: 0;
-;
-  }
-
-.line-div    
-  h1:after {
-   
+.line-div h1:after {
     right: 0;
- }
+}
+
+
+
+
+.text-block{
+    height: 300px;
+    margin-top: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    align-content: center;
+    padding: 0px 200px 0px 200px;
+    text-align: center;
+    line-height: 1,7;
+
+}

@@ -13,6 +13,8 @@ const Category = ({ads}) => {
 
 
   const [filtredAds, setFiltredAds] = useState([]);
+  const [search, setSearch] = useState('');
+
   console.log(filtredAds)
 
 
@@ -22,6 +24,8 @@ const Category = ({ads}) => {
   console.log(slug)
 
 
+
+  console.log(search);
 /* 
 
 
@@ -58,6 +62,8 @@ const Category = ({ads}) => {
     }, []); 
 
 
+
+
     
 {/*  
       ads.filter(ad  => ad.category === activeCategory).map((ad) => (
@@ -84,15 +90,23 @@ const Category = ({ads}) => {
      const getClassName = (answer) => { 
 
       switch(answer) {
-        case("inredning"): return "inredning"
-        case("mat"): return "mat"
-        case("klader"): return "klader"
+        case("inredning"): return "interior"
+        case("mat"): return "food"
+        case("klader"): return "clothes"
 
       
       }
        
     }
     
+
+
+    const handelSearch = e =>{
+      const items= filtredAds.filter(item => ((item.item).toLowerCase()).includes
+        (search.toLocaleLowerCase()))
+
+        console.log(items)
+    }
      
    return (
      <div>
@@ -119,7 +133,24 @@ const Category = ({ads}) => {
            
         </div>
       </section>
-         
+
+
+
+
+
+          <form className='searchForm' onSubmit={handelSearch}>
+            <label htmlFor='search'>Search</label>
+            <input
+                id='search'
+                type='text'
+                role='searchbox'
+                placeholder='Search Items'
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                
+            />
+          <button typ="submit">Publish</button>
+        </form>
        
       
      

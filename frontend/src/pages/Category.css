@@ -1,7 +1,6 @@
-.inredning,
-.mat,
-.klader{
-    background-image: url(../images/hero-image.jpg);
+.interior,
+.food,
+.clothes{
     height: 65vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -12,17 +11,16 @@
 
 
 
-.inredning{
+.interior{
     background-image: url(../images/furniture-cat-image.jpg);
    
 }
 
-.mat{
+.food{
     background-image: url(../images/food-cat-image.jpg);
    
 }
 
-.klader{
+.clothes{
     background-image: url(../images/clothes-cat-image.jpg);
- 
 }
