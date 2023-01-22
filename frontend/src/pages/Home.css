@@ -1,7 +1,11 @@
+/*----- Category navigation -----*/
+
 .category-nav{
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 30px;
-    gap: 5rem;
+    gap: 4rem;
 }
 
 .category-div{
@@ -14,12 +18,11 @@
     background-size: cover; 
 }
 
-
 .category-text {
     justify-content: center;
     align-items: center;
     height: 50px;
-    width: 250px;
+    width: 70%;
     background-color:white; 
     opacity: 80%;
 }
@@ -27,7 +30,6 @@
 .category-div a{
     text-decoration: none;
 }
-
 
 .interior-link{
     background-image: url(../images/furniture-cat-image.jpg); 
@@ -42,27 +44,19 @@
 }
 
 
-
-
-
-
-
-
-
-
 /*----- Line and Text section divider -----*/
 
-.line-div h1 { 
-    margin: 80px auto;
+.line-div h2 { 
+    margin: 70px auto 10px;
     text-align: center;
     position:relative;
 }
 
-.line-div h1:before, 
-.line-div h1:after {
+.line-div h2:before, 
+.line-div h2:after {
     content: "";
     display:block;
-    width: 25%;
+    width: 15%;
     height:2px;
     background: rgb( var(--clr-light-green) );
     position: absolute;
@@ -70,26 +64,45 @@
     z-index: -2;  
 }
 
-.line-div h1:before {
+.line-div h2:before {
     left: 0;
 }
 
-.line-div h1:after {
+.line-div h2:after {
     right: 0;
 }
 
 
-
+/*----- Text section -----*/
 
 .text-block{
     height: 300px;
     margin-top: 2rem;
+    justify-content: center;
+    align-content: center;
+}
+
+.text-block div{
+    padding: 2rem;
+    max-width: 600px;
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
     align-content: center;
-    padding: 0px 200px 0px 200px;
     text-align: center;
     line-height: 1,7;
+}
 
+
+@media screen and (min-width:800px){
+    /* For desktop: */
+  
+    .category-nav{
+        flex-direction: row;
+    }
+
+    .line-div h2:before, 
+    .line-div h2:after {
+        width: 25%;
+    }
 }

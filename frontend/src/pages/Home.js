@@ -9,59 +9,47 @@ import Ads from './Ads';
 const Home = ({ads}) => {
   const date = new Date().toLocaleString().split(",")[0];
 
-
-
-
- 
-
-  
   return (
     <main>
       <Hero />
       <div className='line-div'>
-        <h1 className='fs-500'>KATEGORIER</h1>
+        <h2>KATEGORIER</h2>
       </div>
       
       <nav className="flex category-nav">
-        <div className='flex interior-link category-div'>
+        <div className='flex food-link category-div'>
           <div className="flex category-text text-dark">
             <NavLink className="text-dark fs-500" to="kategori/mat">MAT</NavLink>
           </div>
         </div>
-        <div className='flex food-link category-div'>
+        <div className='flex clothes-link category-div'>
           <div className="flex category-text text-dark">
             <NavLink className="text-dark fs-500" to="/kategori/klader">KLÄDER</NavLink>
           </div>
         </div>
-        <div className='flex clothes-link category-div'>
+        <div className='flex interior-link category-div'>
           <div className="flex category-text text-dark">
             <NavLink className="text-dark fs-500" to="/kategori/inredning">INREDNING</NavLink>
           </div>
         </div>
       </nav>
 
-      <div className='flex text-block bg-accent'>
-        <h2 className='fs-600'>Det ska vara LÄTT att göra RÄTT</h2>
-        <p>Nästan allt du inte längre berhöver kan komma till användning på annat sätt. Åtetrvinn dina tomma förpackningar och lämna bort dina gamla prylar och kläder, 
-        så får de nytt liv. På så sätt minskar du klimtpåverkan från din komnsumtion.</p>
-      </div>   
-
-
+      <section className='flex text-block bg-accent'>
+        <div className='flex'>
+          <h2 className='fs-600'>Det ska vara LÄTT att göra RÄTT</h2>
+          <p>Nästan allt du inte längre berhöver kan komma till användning på annat sätt. Åtetrvinn dina tomma förpackningar och lämna bort dina gamla prylar och kläder, 
+          så får de nytt liv. På så sätt minskar du klimtpåverkan från din komnsumtion.</p>
+        </div>
+      </section>   
 
       <div className='line-div'>
-        <h1 className='fs-500'>SENASTE ANNONSERNA</h1>
+        <h2>DAGENS ANNONSER</h2>
       </div>
 
-
-      <AdsList 
-        ads={ads.filter(ad => ad.date.split("T")[0] === date)} 
-      />
+      <AdsList ads={ads.filter(ad => ad.date.split("T")[0] === date)} />
       
-
     </main>
-
   )
-
 }
 
 

@@ -317,24 +317,25 @@ li{
 
 
 .hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url(./images/hero-image.jpg);
-  height: 65vh;
+  height: 60vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  gap: 0;
+  
+  
 }
 
 .hero-text {
+  margin: 5%;
   flex-direction: column;
   text-align: center;
-  position: absolute;
-  height: 250px;
   max-width: 450px;
-  background-color: rgba(255, 255, 255, 0.49);
-  top: 15%;
-  left: 5%;
+  background-color: rgba(255, 255, 255, 0.774);
   padding: 35px;
 }
 
@@ -426,4 +427,27 @@ li{
 /*---------------------------------------------------------*/
 
 
+
+
+@media screen and (min-width:800px){
+  /* For desktop: */
+
+ 
+
+  .hero-text {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    margin: 0;
+
+  }
+      
+
+  .hero-text {
+    
+ 
+  }
+    
+  
+}
 
