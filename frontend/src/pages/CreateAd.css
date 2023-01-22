@@ -1,0 +1,42 @@
+.create-ad-page{
+    position: relative;
+    margin: auto;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    padding-inline: 2em;
+    margin-inline: auto;
+}
+
+.create-ad-section{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    border-radius: 10px;
+    max-width: 800px;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 5%;
+}
+
+.create-ad-form{
+    flex-direction: column;
+    margin-top: 30px;
+    width: 80%;
+    text-align: left;
+}
+
+.create-ad-form textarea{
+    height: 200px;
+    margin-bottom: 30px;
+}
+
+.create-ad-form input, 
+.create-ad-form button,
+.create-ad-form textarea,
+.create-ad-form select{
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid rgb( var(--clr-dark) );
+  border-radius: 4px;
+}

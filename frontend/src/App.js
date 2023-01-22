@@ -86,7 +86,7 @@ function App() {
                   <Route path="/" element={<Home ads={ads} newAds={newAds} activeCategory={activeCategory} filterAds={filterAds}/>}/>
                     <Route path="/login" element={<Login />}/>
                     <Route path="/skapa-konto" element={<Register />}/>
-                    <Route path="/skapa" element={<CreateAd />}/>
+                    <Route path="/skapa-annons" element={<CreateAd />}/>
                     <Route path='/mina-sidor' element={<MyPage />}/>
 
  
@@ -102,7 +102,7 @@ function App() {
                     
 
 
-       
+                    <Route path="/*" element={<NotFound />} />
 
                   
               </Routes>

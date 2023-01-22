@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className="primary-navigation underline-indicators flex">
     
-        <NavLink className="text-dark" to="/annonser/skapa"><TbCameraPlus size="30px" strokeWidth="1" />Skapa annons</NavLink>
+        <NavLink className="text-dark" to="/skapa-annons"><TbCameraPlus size="30px" strokeWidth="1" />Skapa annons</NavLink>
         <NavLink className="text-dark" to="/mina-sidor"><TbHeart size="30px" strokeWidth="1" />Sparade annonser {cartItems.length}</NavLink>
     
      {currentUser
