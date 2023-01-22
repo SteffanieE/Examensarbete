@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { AuthContext } from "../context/AuthContext.js";
 import { FavoriteListContext } from '../context/FavoriteListContext';
+import AdsList from '../components/AdsList';
 import moment from "moment";
 import axios from '../api/axios';
 
@@ -60,8 +61,6 @@ const MyPage = () => {
 
            <section className='user-section'> 
                 <div>
-                
-                    
                     <button onClick={logout}>Logga ut</button>
                     <button onClick={() => deleteUser(id)}>Ta bord användare</button>
                 </div>
@@ -75,49 +74,52 @@ const MyPage = () => {
                 
             
     
-        
+            <h2>Mina annonser</h2>
             <section className="my-ads-section">
-                <h2>Mina annonser</h2>
+                
                 <table className='my-ads-tabel'>
-                    <tr>
-                        <th>Datum:</th>
-                        <th>Titel:</th>
-                        <th>Bild:</th>
-                        <th>Kategori:</th>
-                        <th>Beskrivning:</th>
-                        <th>Hämtningsadress:</th>
-                        <th></th>
-                        <th></th>
-                       
-                    </tr>
-                {ads.map((ad) => (
-                    <tr className="my-ads-rows" key={ad.id}>                        
-                        <td>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</td>
-                        <td>{ad.title}</td>
-                        <td><img src={`../upload/${ad.img_url}`} alt={ad.title} height="50" width="50" /></td>
-                        <td>{ad.category}</td>
-                        <td>{getText(ad.description)}</td>
-                        <td>
-                            <p>{ad.street}</p>
-                            <p>{ad.zipcode}</p>
-                            <p>{ad.city}</p>
-                        </td>
-                        
-
-            
-                        <td><Link className='large-button-primary' to={`/skapa?edit=2`} state={ad}>Uppdatera</Link>  </td>
-                        <td><button className='large-button-primary' onClick={() => handleDelete(ad.id)}>Radera</button> </td>     
-                            
+                    <tbody>
+                        <tr>
+                            <th>Datum:</th>
+                            <th>Titel:</th>
+                            <th>Bild:</th>
+                            <th>Kategori:</th>
+                            <th>Beskrivning:</th>
+                            <th>Hämtningsadress:</th>
+                            <th></th>
+                            <th></th>
                         </tr>
-                    ))}
+                            {ads.map((ad) => (
+                        <tr className="my-ads-rows" key={ad.id}>                        
+                            <td>{moment(ad.date).format("YYYY-MM-DD HH:mm")}</td>
+                            <td>{ad.title}</td>
+                            <td><img src={`../upload/${ad.img_url}`} alt={ad.title} height="50" width="50" /></td>
+                            <td>{ad.category}</td>
+                            <td>{getText(ad.description)}</td>
+                            <td>
+                                <p>{ad.street}</p>
+                                <p>{ad.zipcode}</p>
+                                <p>{ad.city}</p>
+                            </td>
+                
+                            <td><Link className='large-button-primary' to={`/skapa?edit=2`} state={ad}>Uppdatera</Link>  </td>
+                            <td><button className='large-button-primary' onClick={() => handleDelete(ad.id)}>Radera</button> </td>     
+                                
+                        </tr>
+                        ))}
+                    </tbody>
                 </table>
             </section>  
 
             
   
             
-            <section className="adss">
-                <h2>Sparade annonser</h2> 
+            <section className="favorit-ads-list">
+                <h2>Mina sparade annonser</h2> 
+                <AdsList className="avorit-ads-list" ads={cartItems} />
+
+
+                {/* <h2>Sparade annonser</h2> 
                     <table className='my-ads-tabel'>
                         <tr>
                             <th>Datum:</th>
@@ -144,7 +146,7 @@ const MyPage = () => {
                     ))}
 
 
-                    </table>
+                    </table> */}
             </section>  
             
        </main>

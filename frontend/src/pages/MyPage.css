@@ -10,24 +10,45 @@
 
 
 .my-page section{
-    border: 2px solid goldenrod;
+  padding: 30px;
+  border: 2px solid rgb( var(--clr-light-green) );
+  border-radius: 10px;
+}
+
+.my-ads-section{
+  overflow-x: auto;
 }
 
 .my-ads-tabel{
-    border: 2px solid greenyellow;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
    
 }
+tr:nth-child(even){background-color: #f2f2f2}
 
 table, th {  
-    border-bottom: 2px solid rgb( var(--clr-light-green) );
+    border-bottom: 3px solid rgb( var(--clr-light-green) );
     text-align: left;
   }
   
   table {
+
     border-collapse: collapse;
     width: 100%;
   }
   
   th, td {
     padding: 5px;
+  }
+
+  tr{
+    border-bottom: 1px solid rgb( var(--clr-light-green) );
+  }
+
+  .avorit-ads-list .card {
+
+    background-color: blue;
+
   }

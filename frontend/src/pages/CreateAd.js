@@ -14,7 +14,7 @@ const CreateAd = () => {
   const { currentUser } = useContext(AuthContext);
 
   const state = useLocation().state;
-  
+  console.log(state)
 
   const [title, setTitle] = useState(state?.title || "");
   const [description, setDescription] = useState(state?.description || "");
