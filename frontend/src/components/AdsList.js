@@ -22,39 +22,47 @@ const AdsList = ({ads}) => {
 
   console.log(cartItems)
   return (
-      <ul className='grid ads-container bg-white'>
+      <ul className='ads-list bg-white'>
         {
           ads.map((ad) => 
           
           <li className='card' key={ad.id}>
-            <div className='heart-icon-container'>
-              {cartItems.find(x => x.id === ad.id)
-                ? <FaHeart className='text-accent' onClick={(e) => {e.preventDefault(); addItem(ad)}} size="30px" strokeWidth="1" outline='black' />
-                : <FaHeart onClick={(e) => {e.preventDefault(); addItem(ad)}} size="30px" strokeWidth="8" fill='none' outline='black' />
-              }
-            </div>
+           
             
-            <div className="ad-img-container">
+            <div className="ad-image">
               <img src={`../upload/${ad.img_url}`} alt={ad.title} />
             </div>
+
             
-            <div className='flex fs-200'>
-              <p className='uppercase'>{ad.city}</p> 
-              <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
+            
+            <div className='ad-info fs-200'>
+
+              <div className='heart-icon-container'>
+                {cartItems.find(x => x.id === ad.id)
+                  ? <FaHeart className='text-accent' onClick={(e) => {e.preventDefault(); addItem(ad)}} size="30px" strokeWidth="1" outline='black' />
+                  : <FaHeart onClick={(e) => {e.preventDefault(); addItem(ad)}} size="30px" strokeWidth="8" fill='none' outline='black' />
+                }
+              </div>
+              <div>
+                <h3 className='uppercase'>{ad.city}</h3> 
+                <p>Inlagd: {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
+              </div>
+              
+              <h1>{ad.title}</h1>
             </div>
-            <h1>{ad.title}</h1>
+          
           
             
             {/* <p>{getText(ad.description)}</p> */}
               
             {currentUser === null? 
               
-              <Link className="link text-dark" to={`/login`}>Loga in för mer info</Link>
+              <Link className="link" to={`/login`}>Loga in för mer info</Link>
              
               
            
             :  
-              <Link className="link text-dark" to={`/annonser/${ad.id}`}>MER INFO</Link>
+              <Link className="link large-button-primary fs-300" to={`/annonser/${ad.id}`}>MER INFO</Link>
               
             
           }

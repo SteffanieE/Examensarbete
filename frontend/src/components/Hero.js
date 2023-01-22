@@ -6,7 +6,7 @@ const Hero = () => {
 
 
   return (
-    <section className='hero-image'>
+    <section className='flex hero-image'>
         <div className="hero-text flex text-dark">
             <h2 className='fs-600 ff-sans-cond'>Släng inte – återbruka!</h2>
             <p>När skänker direkt till andra privatpersoner slipper 

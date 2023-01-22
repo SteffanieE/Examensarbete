@@ -46,7 +46,7 @@ const Home = ({ads}) => {
         <h2>DAGENS ANNONSER</h2>
       </div>
 
-      <AdsList ads={ads.filter(ad => ad.date.split("T")[0] === date)} />
+       <AdsList ads={ads.filter(ad => ad.date.split("T")[0] === date)} />
       
     </main>
   )

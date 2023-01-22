@@ -317,7 +317,6 @@ li{
 
 
 .hero-image {
-  display: flex;
   justify-content: center;
   align-items: center;
   background-image: url(./images/hero-image.jpg);
@@ -326,8 +325,6 @@ li{
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  
-  
 }
 
 .hero-text {
@@ -343,40 +340,81 @@ li{
 
 
 .heart-icon-container{
-
     position: absolute;
     z-index: 1;
-    top: 50px;
-    right: 50px;
- 
+    
+    right: 15px;
 }
 
-.ads-container{
+
+
+.ads{
+  
+  margin-top: 100px;
+
+}
+
+
+.ads-list{
 /*   grid-template-columns: 250px 250px 250px 250px;
   grid-column-gap: 20px;
   grid-row-gap: 40px;
   justify-content: center;  */
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
 }
 
-.ads-container .card {
-  padding: 2%;
-  flex-grow: 1;
-  flex-basis: 16%;
+.card {
+  display: flex;
+
+ 
+  width: 300px;
+  box-shadow: 0 -10px 50px 0 rgb(0 0 0 / 10%);
+
+
+
+  /* border: 1px solid rgb( var(--clr-light-green) ); */
+  
   list-style: none;
   position: relative;
   text-align: center;
-  display: flex;
   flex-direction: column;
 }
 
-.card img{
-  height: 250px;
-  object-fit: cover;
+
+.ad-info {
+  padding: 0 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  margin-top: auto;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.ad-image {
+ 
+  
+  height: 320px; 
+  width: 100%;
+ 
 }
 
 
+.ad-image img{
+  width:80%;
+  height:100%;
+  object-fit:contain;
+}
+
+/* @media (max-width: 600px) {
+  .card {
+    flex: 1 46%;
+  }
+} */
 
 .error-message{
   margin-top: 20px;
@@ -441,12 +479,7 @@ li{
     margin: 0;
 
   }
-      
-
-  .hero-text {
-    
- 
-  }
+  
     
   
 }

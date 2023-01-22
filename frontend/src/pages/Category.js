@@ -26,32 +26,6 @@ const Category = ({ads}) => {
 
 
   console.log(search);
-/* 
-
-
-    useEffect(() => {
-
-
-      const fetchData = async () => {
-       
-          try {
-            
-              const res = await axios.get(`/ads/category`, {
-                  params: {
-                      slug: category
-                  }
-              });
-
-              setAds(res.data);
-           
-              console.log(res.data)
-          } catch (err) {
-              console.log(err);
-          }
-      };
-      fetchData();
-    }, []); */
- 
 
 
     useEffect(() =>{
@@ -63,23 +37,6 @@ const Category = ({ads}) => {
 
 
 
-
-    
-{/*  
-      ads.filter(ad  => ad.category === activeCategory).map((ad) => (
-          <div className="ad" key={ad.id}>
-            <Link className="link" to={`/annonser/${ad.id}`}>
-              <h1>{ad.title}</h1>
-            </Link>
-            <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
-            <div className="img">
-              <img src={`../upload/${ad.img_url}`} alt={ad.title} />
-            </div>
-            <p>{ad.category}</p>
-            <p>{ad.city}</p>
-            <p>{getText(ad.description)}</p>
-          </div>
-        )) */}
      
      const getText = (html) =>{
        const doc = new DOMParser().parseFromString(html, "text/html")
@@ -109,54 +66,44 @@ const Category = ({ads}) => {
     }
      
    return (
-     <div>
-     
-      
-       
-      
-     
-       <section className= {getClassName(slug)}>
-        <div className="hero-text flex text-dark">
-          <h1 style={{visibility: 
-        
-        slug === "mat" ? 'visible':'hidden'
-        
-        }}>Mat var det här</h1>
+    
+    <main className="">
 
-        { slug === "mat" ?
-            <h1>Mat</h1>
-
-            :
-            <h1>ingen mat här</h1>
+      <section className= {getClassName(slug)}>
+        <div className="hero-category-text text-dark">
+        { 
+          slug === "mat" 
+          ?(<h1>MAT</h1>) 
+          : slug === "klader" 
+          ? (<h1>KLÄDER</h1>)
+          : (<h1>INREDNING</h1>)
         }
-
-           
         </div>
       </section>
 
-
-
-
-
-          <form className='searchForm' onSubmit={handelSearch}>
-            <label htmlFor='search'>Search</label>
-            <input
-                id='search'
-                type='text'
-                role='searchbox'
-                placeholder='Search Items'
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                
-            />
-          <button typ="submit">Publish</button>
-        </form>
+      <form className='searchForm' onSubmit={handelSearch}>
+          <input
+            id='search'
+            type='text'
+            role='searchbox'
+            placeholder='Search Items'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}  
+          />
+        <button typ="submit">Publish</button>
+      </form>
        
       
      
        <div className="ads">
+
+
+
+  
+         <AdsList ads={filtredAds}/>
+     
        
-         {filtredAds.map((ad) => (
+        {/*  {filtredAds.map((ad) => (
 
           
            <div className="ad" key={ad.id}>
@@ -171,14 +118,57 @@ const Category = ({ads}) => {
              <p>{ad.city}</p>
              <p>{getText(ad.description)}</p>
            </div>
-         ))}
+         ))} */}
        
        </div>
-     </div>
+     </main>
  
    )
  }
 
+
+
+ /* 
+    useEffect(() => {
+      const fetchData = async () => {
+       
+          try {
+            
+              const res = await axios.get(`/ads/category`, {
+                  params: {
+                      slug: category
+                  }
+              });
+
+              setAds(res.data);
+           
+              console.log(res.data)
+          } catch (err) {
+              console.log(err);
+          }
+      };
+      fetchData();
+    }, []); */
+ 
+
+ 
+
+    
+{/*  
+      ads.filter(ad  => ad.category === activeCategory).map((ad) => (
+          <div className="ad" key={ad.id}>
+            <Link className="link" to={`/annonser/${ad.id}`}>
+              <h1>{ad.title}</h1>
+            </Link>
+            <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
+            <div className="img">
+              <img src={`../upload/${ad.img_url}`} alt={ad.title} />
+            </div>
+            <p>{ad.category}</p>
+            <p>{ad.city}</p>
+            <p>{getText(ad.description)}</p>
+          </div>
+        )) */}
 
 export default Category
 
