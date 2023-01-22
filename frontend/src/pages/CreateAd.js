@@ -179,7 +179,11 @@ const CreateAd = () => {
           required
           />
 
-          <button className="large-button-primary" type="submit" >Lägg upp annons</button>
+          <button className="large-button-primary" type="submit" >
+          
+          {state === null ?  "Lägg upp annons" : "Uppdatera"
+           }
+         </button>
         </form>
 
       </section>

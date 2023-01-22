@@ -102,7 +102,7 @@ const MyPage = () => {
                                 <p>{ad.city}</p>
                             </td>
                 
-                            <td><Link className='large-button-primary' to={`/skapa?edit=2`} state={ad}>Uppdatera</Link>  </td>
+                            <td><Link className='large-button-primary' to={`/skapa-annons?edit=2`} state={ad}>Uppdatera</Link>  </td>
                             <td><button className='large-button-primary' onClick={() => handleDelete(ad.id)}>Radera</button> </td>     
                                 
                         </tr>
