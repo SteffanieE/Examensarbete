@@ -6,15 +6,15 @@ import './Login.css';
 
 const Login = () => {
 
+    const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
+    const [error, setError] = useState(null);
     const [inputs, setInputs] = useState({
       email: "",
       password: "",
     }); 
 
-    const [error, setError] = useState(null);
-    const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
-  
+    
     const handleChange = (e) => {
       setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
