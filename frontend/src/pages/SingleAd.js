@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useLocation} from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import moment from "moment";
 import Popup from 'reactjs-popup';
 import axios from '../api/axios';
@@ -12,7 +12,7 @@ const SingleAd = ({ads}) => {
   const [ad, setAd] = useState({});
   const location = useLocation();
   const AdId = location.pathname.split("/")[3];
-
+  const { currentUser } = useContext(AuthContext);
 
 
   const getText = (html) =>{
@@ -69,7 +69,15 @@ const SingleAd = ({ads}) => {
           
           <p>{getText(ad.description)}</p>
 
-          <Popup  trigger={<button className="large-button-primary">HÄMTA</button>} position="center">
+
+          {currentUser === null? 
+              
+              <Link className="link" to={`/login`}>Loga in för mer info</Link>
+             
+              
+           
+            :  
+            <Popup  trigger={<button className="large-button-primary">HÄMTA</button>} position="center">
             {close => (
               <div className="pop">
               <p className="fs-400">Varan finns på följande adress:</p>
@@ -84,6 +92,11 @@ const SingleAd = ({ads}) => {
               </div>
             )}
           </Popup>
+              
+            
+          }
+
+          
         </section>
       </div>
     </main>

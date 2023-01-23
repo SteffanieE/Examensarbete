@@ -55,17 +55,10 @@ const AdsList = ({ads}) => {
             
             {/* <p>{getText(ad.description)}</p> */}
               
-            {currentUser === null? 
-              
-              <Link className="link" to={`/login`}>Loga in för mer info</Link>
-             
-              
-           
-            :  
-              <Link className="link large-button-primary fs-300" to={`/annonser/${ad.id}`}>MER INFO</Link>
-              
-            
-          }
+        
+         
+              <Link className="link large-button-primary fs-300" to={`/kategori/${ad.slug}/${ad.id}`}>MER INFO</Link>
+          
             
 
           </li>

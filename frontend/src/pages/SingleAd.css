@@ -71,11 +71,13 @@
   
 
 .popup-content {
-position: relative;
+position: absolute;
 margin: auto;
 background: rgb(255, 255, 255);
 width: 100%;
 padding: 10px;
+top: 645.3px;
+left: 601.8px;
 }
   .popup-arrow {
     color: rgb(255, 255, 255);
