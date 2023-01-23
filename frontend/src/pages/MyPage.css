@@ -1,29 +1,35 @@
-.my-page{
-    position: relative;
-    margin: auto;
-    padding-top: 150px;
-    padding-bottom: 100px;
-    
-    flex-direction: column;
-    gap: 20px;
+.my-page section{
+  margin-top: 80px;
+}
+
+.my-page h2{
+  margin-bottom: 15px;
 }
 
 
-.my-page section{
-  padding: 30px;
-  border: 2px solid rgb( var(--clr-light-green) );
-  border-radius: 10px;
+.user-section{
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.user-buttons button{
+  margin-right: 40px;
 }
 
 .my-ads-section{
   overflow-x: auto;
+  
+ 
 }
 
 .my-ads-tabel{
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
-  border: 1px solid #ddd;
+  border-radius: 10px;
+  border: 1px solid rgb( var(--clr-light-green) );
    
 }
 tr:nth-child(even){background-color: #f2f2f2}

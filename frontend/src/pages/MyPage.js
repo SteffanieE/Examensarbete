@@ -55,37 +55,38 @@ const MyPage = () => {
 
      
      return (
-       <main className='container my-page flex'>
-           <h1>Välkommen {currentUser.email}</h1>
-           <p>Tack för att du bidrar. Tillsammans kan vi alla bli än starkare miljöhjältar!</p>
+        <main className='container my-page'>
+           
+            <section className='user-section'> 
+                <h1>Välkommen {currentUser.email}</h1>
+                <p>Tack för att du bidrar. Tillsammans kan vi alla bli än starkare miljöhjältar!</p>
 
-           <section className='user-section'> 
-                <div>
-                    <button onClick={logout}>Logga ut</button>
-                    <button onClick={() => deleteUser(id)}>Ta bord användare</button>
+                <div className='user-buttons'>
+                    <button className='small-button-primary' onClick={logout}>Logga ut</button>
+                    <button className='small-button-primary delete' onClick={() => deleteUser(id)}>Ta bord användare</button>
                 </div>
                 <div>
                     <img></img>
                 </div>
-           </section>
+            </section>
            
 
           
                 
             
     
-            <h2>Mina annonser</h2>
+            
             <section className="my-ads-section">
-                
+            <h2>Mina annonser</h2>   
                 <table className='my-ads-tabel'>
                     <tbody>
                         <tr>
-                            <th>Datum:</th>
-                            <th>Titel:</th>
-                            <th>Bild:</th>
-                            <th>Kategori:</th>
-                            <th>Beskrivning:</th>
-                            <th>Hämtningsadress:</th>
+                            <th>Datum</th>
+                            <th>Titel</th>
+                            <th>Bild</th>
+                            <th>Kategori</th>
+                            <th>Beskrivning</th>
+                            <th>Hämtningsadress</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -102,8 +103,8 @@ const MyPage = () => {
                                 <p>{ad.city}</p>
                             </td>
                 
-                            <td><Link className='large-button-primary' to={`/skapa-annons?edit=2`} state={ad}>Uppdatera</Link>  </td>
-                            <td><button className='large-button-primary' onClick={() => handleDelete(ad.id)}>Radera</button> </td>     
+                            <td><Link className='small-button-primary' to={`/skapa-annons?edit=2`} state={ad}>Uppdatera</Link>  </td>
+                            <td><button className='small-button-primary delete' onClick={() => handleDelete(ad.id)}>Radera</button> </td>     
                                 
                         </tr>
                         ))}

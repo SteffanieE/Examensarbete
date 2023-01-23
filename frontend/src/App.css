@@ -174,7 +174,6 @@ li{
 
 .large-button {
   position: relative;
-
   cursor: pointer;
   border: none;
   /* z-index: 1; */
@@ -204,6 +203,20 @@ li{
   background-color: rgb( var(--clr-dark) );
 }
 
+.small-button-primary {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  min-width: 100px;
+  border-radius: 2px;
+  place-items: center;
+  padding: .75em 1em;
+  font-size: var(--fs-300);
+  text-decoration: none;
+  color: rgb( var(--clr-white ) );
+  background-color: rgb( var(--clr-dark) );
+}
+
 
 .large-button-primary:hover {
   opacity: 0.8;
@@ -218,7 +231,7 @@ li{
   width: 100%;
   border-radius: 2px;
   place-items: center;
-  padding: .75em 2em;
+  padding: .75em 1em;
   text-decoration: none;
   color: rgb( var(--clr-white ) );
   background-color: rgb( var(--clr-dark) );
@@ -229,19 +242,18 @@ li{
   opacity: 0.8;
 }
 
+.delete{
+  background-color: rgb(161, 16, 16);
 
-.small-button-primary {
-  position: relative;
-  cursor: pointer;
-  border: none;
-  width: 40px;
-  border-radius: 2px;
-  place-items: center;
-
-  text-decoration: none;
-  color: rgb( var(--clr-white ) );
-  background-color: rgb( var(--clr-dark) );
 }
+
+.my-ads-row Link{
+  
+}
+
+
+
+
 
 
 .small-button-primary:hover {
