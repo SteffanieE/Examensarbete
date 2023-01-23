@@ -8,7 +8,7 @@ import {TbCameraPlus, TbHeart, TbUserCircle } from "react-icons/tb";
 const Navbar = () => {
 
   const { currentUser } = useContext(AuthContext);
-  const { cartItems } = useContext(FavoriteListContext)
+  //const { cartItems } = useContext(FavoriteListContext)
 
   return (
     <nav className="primary-navigation underline-indicators flex">

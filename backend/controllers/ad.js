@@ -48,7 +48,7 @@ export const postAd = (req, res) => {
 
   db.query(q, [values], (err, data) => {
     if (err) return res.status(500).json(err);
-    return res.json("Post has been created.");
+    return res.json("Annons upplagd!");
   });
 
 };
@@ -61,9 +61,9 @@ export const deleteAd = (req, res) => {
   const q = "DELETE FROM ads WHERE `id` = ?";
 
   db.query(q, [postId], (err, data) => {
-    if (err) return res.status(403).json("You can delete only your ad!");
+    if (err) return res.status(403).json("Du kan enbart ta bort dina egna annonser!");
 
-    return res.json("Ad has been deleted!");
+    return res.json("Annonsen har tagits bort!");
   });
   
 };
@@ -88,7 +88,7 @@ export const updateAd = (req, res) => {
 
   db.query(q, [...values, adId], (err, data) => {
     if (err) return res.status(500).json(err);
-    return res.json("The ad has been updated!");
+    return res.json("Annonsen uppdaterad!");
   });
 }; 
 

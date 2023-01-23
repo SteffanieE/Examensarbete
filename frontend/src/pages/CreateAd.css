@@ -9,6 +9,7 @@
 
 .create-ad-section{
     display: flex;
+    border: 2px solid rgb( var(--clr-dark) );
     flex-direction: column;
     margin: auto;
     align-items: center;

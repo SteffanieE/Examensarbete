@@ -8,7 +8,7 @@ const Home = ({ads}) => {
   const date = new Date().toLocaleString().split(",")[0];
 
   return (
-    <main>
+    <>
       <Hero />
       <div className='line-div'>
         <h2>KATEGORIER</h2>
@@ -46,7 +46,7 @@ const Home = ({ads}) => {
 
        <AdsList ads={ads.filter(ad => ad.date.split("T")[0] === date)} />
       
-    </main>
+    </>
   )
 }
 

@@ -16,7 +16,7 @@ const Header = () => {
       <div className='container'>
         <Link to="/"><img src={logo} alt='logo' /></Link>
       </div>
-      {/* <Breadcrumbs /> */}
+      <Breadcrumbs />
     </header>
   )
 }

@@ -23,11 +23,13 @@
 
   /* font-families */
   --ff-serif: "Bellefair", serif;
-  --ff-sans-cond: "Barlow Condensed", sans-serif;
+  --ff-indie-flower-cursiv: 'Indie Flower', cursive;
   --ff-sans-normal: "Barlow", sans-serif;
 
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; 
+
+  font-family: 'Indie Flower', cursive;
   
 }
 
@@ -121,6 +123,13 @@ li{
   max-width: 1000px;
 }
 
+main{
+  position: relative;
+
+  min-height: 30vw;
+  margin: auto;
+  
+}
 
 
 /* colors */
@@ -138,8 +147,8 @@ li{
 
 /* typography */
 
-.ff-serif { font-family: var(--ff-serif); } 
-.ff-sans-cond { font-family: var(--ff-sans-cond); } 
+
+.ff-indie-flower { font-family: var(--ff-indie-flower-cursiv); } 
 .ff-sans-normal { font-family: var(--ff-sans-normal); } 
 
 .letter-spacing-1 { letter-spacing: 4.75px; } 

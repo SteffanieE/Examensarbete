@@ -74,13 +74,13 @@ const CreateAd = () => {
           });
       navigate("/");   
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
   };
 
   return (
-    <main className="create-ad-page bg-accent">
-      <section className="create-ad-section bg-white">
+    <main className="create-ad-page">
+      <section className="create-ad-section">
         <h1>Skapa en ny annons</h1>
         <form className="flex create-ad-form bg-white" onSubmit={handleClick}>
       
@@ -142,6 +142,7 @@ const CreateAd = () => {
           <button className="large-button-primary" type="submit" >          
             {state === null ?  "Lägg upp annons" : "Uppdatera"}
           </button>
+          
         </form>
       </section>
     </main>

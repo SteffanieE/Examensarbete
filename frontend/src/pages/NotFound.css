@@ -1,0 +1,12 @@
+
+.not-found-page{
+    justify-content: center;
+   
+}
+
+.not-found-div{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}

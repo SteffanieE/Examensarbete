@@ -1,39 +1,37 @@
 
 footer{
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 0px;
-
-   
+    margin: auto;
+    padding: 20px
 }
 
 .footer-container{
-  
-    flex-direction: column;
-   
-    min-width: 300px;
-   
 
- 
-    
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+
 }
 
 
 .footer-block{
-    padding: 0 20px;
+   
+   
+    display: inline-block;
+    padding: 0px 8px 8px;
+    vertical-align: top; 
+    text-align: center;
  
    
-    text-align: center;
+  
 
 }
 
 
 .footer-block h4{
 
-    border-bottom: 2px dotted rgb( var(--clr-white) );
-    padding: 3px;
+   
+ 
     font-weight: 600;
     
   
@@ -41,11 +39,14 @@ footer{
 }
 
 
-.block-content{
-    padding: 15px 30px;
+.block-content {
+    padding: 10px 0px;
+    font-size: var(--fs-300);
+
 }
 
 .media-icons{
+
     justify-content: center;
     
 } 
@@ -55,35 +56,25 @@ footer{
   
     .footer-container{
         flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .media-icons{
+        justify-content: left;
     }
 
     
     .footer-block{
-
-       
-        width: 200px;
-       
-    
+        text-align: left;
     }
-
-
-   
-}
-
-@media screen and (min-width:800px){
-    /* For desktop: */
   
-    .footer-container{
-        flex-direction: row;
-    }
 
-    .footer-block{
 
-       
-        width: 250px;
-       
-    
-    }
    
 }
+
+
+
+
+
 
