@@ -1,22 +1,22 @@
-import './MyPage.css';
-import React from 'react'
 import { useEffect, useState, useContext  } from "react";
-import { Link, useLocation } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.js";
 import { FavoriteListContext } from '../context/FavoriteListContext';
 import AdsList from '../components/AdsList';
 import moment from "moment";
 import axios from '../api/axios';
+import './MyPage.css';
 
 
 const MyPage = () => {
 
     const { currentUser, logout, deleteUser } = useContext(AuthContext);
-    const {cartItems, addItem}  = useContext(FavoriteListContext)
+    const {cartItems}  = useContext(FavoriteListContext)
     const [ads, setAds] = useState([]);
     const id = currentUser.id;
 
+
+    //Sends request to the backend to get all ads that match the logged in user's id.
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -27,7 +27,7 @@ const MyPage = () => {
                 });
 
                 setAds(res.data);
-                console.log(res)
+
             } catch (err) {
                 console.log(err);
             }
@@ -35,12 +35,13 @@ const MyPage = () => {
         fetchData();
     }, [id]);
 
-    
+    // Converts string to text
     const getText = (html) =>{
         const doc = new DOMParser().parseFromString(html, "text/html")
         return doc.body.textContent
     }
-     
+    
+    //Sends request to the backend to DELETE ad with matching id.
     const handleDelete = async (adId) => {
         try {
             await axios.delete(`/ads/${adId}`);
@@ -51,33 +52,18 @@ const MyPage = () => {
         }
     }
 
-
-
-     
      return (
         <main className='container my-page'>
-           
             <section className='user-section'> 
                 <h1>Välkommen {currentUser.email}</h1>
                 <p>Tack för att du bidrar. Tillsammans kan vi alla bli än starkare miljöhjältar!</p>
-
                 <div className='user-buttons'>
                     <button className='small-button-primary' onClick={logout}>Logga ut</button>
                     <button className='small-button-primary delete' onClick={() => deleteUser(id)}>Ta bord användare</button>
                 </div>
-                <div>
-                    <img></img>
-                </div>
             </section>
-           
-
-          
-                
-            
-    
-            
             <section className="my-ads-section">
-            <h2>Mina annonser</h2>   
+                <h2>Mina annonser</h2>   
                 <table className='my-ads-tabel'>
                     <tbody>
                         <tr>
@@ -111,16 +97,16 @@ const MyPage = () => {
                     </tbody>
                 </table>
             </section>  
-
-            
-  
-            
             <section className="favorit-ads-list">
                 <h2>Mina sparade annonser</h2> 
                 <AdsList className="avorit-ads-list" ads={cartItems} />
+            </section>              
+       </main>
+     )
 
 
-                {/* <h2>Sparade annonser</h2> 
+
+            {/* <h2>Sparade annonser</h2> 
                     <table className='my-ads-tabel'>
                         <tr>
                             <th>Datum:</th>
@@ -148,11 +134,6 @@ const MyPage = () => {
 
 
                     </table> */}
-            </section>  
-            
-       </main>
-          
-     )
 }
 
 export default MyPage

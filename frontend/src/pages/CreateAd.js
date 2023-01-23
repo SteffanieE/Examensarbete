@@ -1,20 +1,15 @@
-import React, { useState, useContext } from "react";
-import { useLocation, useNavigate, Link, redirect } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useLocation, useNavigate} from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.js";
-import './CreateAd.css';
-
-
 import axios from '../api/axios';
 import moment from "moment";
+import './CreateAd.css';
 
 const CreateAd = () => {
 
-  const navigate = useNavigate();
-
   const { currentUser } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const state = useLocation().state;
-  console.log(state)
 
   const [title, setTitle] = useState(state?.title || "");
   const [description, setDescription] = useState(state?.description || "");
@@ -25,98 +20,63 @@ const CreateAd = () => {
   const [city, setCity] = useState(state?.city || "");
   const [slug, setSlug] = useState(state?.slug || "");
   
- 
-     
-    
-    
-
-    
-           
-
-    const upload = async () => {
-        try {
-          const formData = new FormData();
-          formData.append("file", image);
-          console.log(formData)
-          const res = await axios.post("/upload", formData);
-          console.log(res.data)
-          return res.data;
-        
-        } catch (err) {
-          console.log(err);
-        }
-      };
-
-      const handleChange 
-         = (e) => {
-          
-          setCategory(e.target.value)
-          const cat = e.target.value
-          const klader = "klader"
-
-            if (cat === "kläder" ) {
-            setSlug(klader) 
-          }
-          else
-          setSlug(e.target.value)
-
-          
-
-         }
-
-    
-      const handleClick = async (e) => {
-        e.preventDefault();
-        const imgUrl = await upload();
-
-
+  //Sends selected image to backend
+  const upload = async () => {
+      try {
+        const formData = new FormData();
+        formData.append("file", image);
+        const res = await axios.post("/upload", formData);
+        return res.data;
       
+      } catch (err) {
+        console.log(err);
+      }
+  };
 
-         
-        
-        console.log(description)
-      
-      
-        console.log(category)
-        console.log(street)
-        console.log(zipcode)
-        console.log(city)
-        console.log(currentUser.id)
-        console.log(slug)
+  // Adds slug to the ad
+  const handleChange = (e) => {     
+    setCategory(e.target.value)
 
+    if (e.target.value === "kläder" ) {
+      setSlug("klader") 
+    } else
+      setSlug(e.target.value)
+  };
 
+  //Checks if state is true. If true the ad is updated otherwise a new ad is created.
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const imgUrl = await upload();
+    try {
 
-     
-    
-        try {
-
-          state
-          ? await axios.put(`/ads/${state.id}`, {
-              title,
-              description,
-              category,
-              slug,
-              street,
-              zipcode,
-              city,
-            })
-          : await axios.post(`/ads/`, {
-                title,
-                description,
-                date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-                category,
-                slug,
-                img_url: image ? imgUrl : "",
-                street,
-                zipcode,
-                city,
-                user_id: currentUser.id
-              });
-          navigate("/");   
-        } catch (err) {
-          console.log(err);
-        }
-      };
+      state
+      ? await axios.put(`/ads/${state.id}`, {
+          title,
+          description,
+          category,
+          slug,
+          img_url: image ? imgUrl : "",
+          street,
+          zipcode,
+          city,
+        })
+      : await axios.post(`/ads/`, {
+            title,
+            description,
+            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+            category,
+            slug,
+            img_url: image ? imgUrl : "",
+            street,
+            zipcode,
+            city,
+            user_id: currentUser.id
+          });
+      navigate("/");   
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <main className="create-ad-page bg-accent">
@@ -127,9 +87,9 @@ const CreateAd = () => {
           <label>Kategori</label>
           <select name="categories" value={category} id="categories"  onChange={handleChange} required>
               <option value=""> -- Välj i listan -- </option>
-              <option value="kläder">Kläder</option>
-              <option value="mat">Mat</option>
-              <option value="inredning">Inredning</option>
+              <option value="Kläder">Kläder</option>
+              <option value="Mat">Mat</option>
+              <option value="Inredning">Inredning</option>
           </select> 
           
           <input
@@ -179,26 +139,16 @@ const CreateAd = () => {
           required
           />
 
-          <button className="large-button-primary" type="submit" >
-          
-          {state === null ?  "Lägg upp annons" : "Uppdatera"
-           }
-         </button>
+          <button className="large-button-primary" type="submit" >          
+            {state === null ?  "Lägg upp annons" : "Uppdatera"}
+          </button>
         </form>
-
       </section>
     </main>
    
 );
     
- 
 };
 
-
- {/*  <textarea
-                type="text"
-                placeholder="Kategori"
-                onChange={(e) => setCategory(e.target.value)}
-                /> */}
 
 export default CreateAd

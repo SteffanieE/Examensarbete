@@ -12,7 +12,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    /* border: 2px solid rgb( var(--clr-light-green) ); */
     margin: auto;
     min-height: 470px;
     border-radius: 10px;
@@ -53,8 +52,7 @@ border-top: 2px solid rgb( var(--clr-light-green) );
       flex-direction: row;
       max-width: 800px;
     }
-  
-     
+   
     .login-part, 
     .signup-part{
         width: 50%;
@@ -65,7 +63,7 @@ border-top: 2px solid rgb( var(--clr-light-green) );
         border-top: none;
     }
     
-    }
+  }
   
   
   

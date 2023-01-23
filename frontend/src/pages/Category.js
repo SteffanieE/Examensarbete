@@ -1,128 +1,67 @@
 import { useEffect, useState  } from "react";
-import { Link, useLocation } from "react-router-dom"
-import Hero from '../components/Hero';
-import moment from "moment";
-import './Category.css';
+import { useLocation } from "react-router-dom"
 import AdsList from '../components/AdsList';
+import './Category.css';
 
 
 const Category = ({ads}) => {
 
-    console.log(ads)
-
-
-
-  const [filtredAds, setFiltredAds] = useState([]);
+  const [filteredAds, setFiltredAds] = useState([]);
   const [search, setSearch] = useState('');
-
-  console.log(filtredAds)
-
-
-    const location = useLocation();
-    const slug = location.pathname.split("/")[2];
-
-  console.log(slug)
+  const location = useLocation();
+  const slug = location.pathname.split("/")[2];
 
 
-
-  console.log(search);
-
-
-    useEffect(() =>{
-
-      const nyLista = ads.filter(ad  => ad.slug === slug)
-      setFiltredAds(nyLista)
-
-    }, []); 
+//Filters the ads depending on the page's slug and saves the filtered list.
+  useEffect(() =>{
+    const filteredList = ads.filter(ad  => ad.slug === slug)
+    setFiltredAds(filteredList)
+  }, []); 
 
 
-
-     
-     const getText = (html) =>{
-       const doc = new DOMParser().parseFromString(html, "text/html")
-       return doc.body.textContent
-     }
-
-
-     const getClassName = (answer) => { 
-
-      switch(answer) {
-        case("inredning"): return "interior"
-        case("mat"): return "food"
-        case("klader"): return "clothes"
-
-      
-      }
-       
-    }
+ //Sets className on hero-category-text depending on the page's slug
+  const getClassName = (answer) => { 
+    switch(answer) {
+      case("inredning"): return "interior"
+      case("mat"): return "food"
+      case("klader"): return "clothes"
+    }  
+  }
     
 
-
-    const handelSearch = e =>{
-      const items= filtredAds.filter(item => ((item.item).toLowerCase()).includes
-        (search.toLocaleLowerCase()))
-
-        console.log(items)
-    }
+  const handelSearch = () =>{
+    const items= filteredAds.filter(item => ((item.item).toLowerCase()).includes
+      (search.toLocaleLowerCase()))
+  }
      
    return (
-    
-    <main className="">
-
-      <section className= {getClassName(slug)}>
-        <div className="hero-category-text text-dark">
-        { 
-          slug === "mat" 
-          ?(<h1>MAT</h1>) 
-          : slug === "klader" 
-          ? (<h1>KLÄDER</h1>)
-          : (<h1>INREDNING</h1>)
-        }
-        </div>
-      </section>
-
-      <form className='searchForm' onSubmit={handelSearch}>
-          <input
-            id='search'
-            type='text'
-            role='searchbox'
-            placeholder='Search Items'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}  
-          />
-        <button typ="submit">Publish</button>
-      </form>
-       
-      
-     
-       <div className="ads">
-
-
-
-  
-         <AdsList ads={filtredAds}/>
-     
-       
-        {/*  {filtredAds.map((ad) => (
-
-          
-           <div className="ad" key={ad.id}>
-             <Link className="link" to={`/kategori/${ad.slug}/${ad.id}`}>
-               <h1>{ad.title}</h1>
-             </Link>
-             <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
-             <div className="img">
-               <img src={`../upload/${ad.img_url}`} alt={ad.title} />
-             </div>
-             <p>{ad.category}</p>
-             <p>{ad.city}</p>
-             <p>{getText(ad.description)}</p>
-           </div>
-         ))} */}
-       
-       </div>
-     </main>
- 
+      <main>
+        <section className= {getClassName(slug)}>
+          <div className="hero-category-text text-dark">
+          { 
+            slug === "mat" 
+            ?(<h1>MAT</h1>) 
+            : slug === "klader" 
+            ? (<h1>KLÄDER</h1>)
+            : (<h1>INREDNING</h1>)
+          }
+          </div>
+        </section>
+        <form className='searchForm' onSubmit={handelSearch}>
+            <input
+              id='search'
+              type='text'
+              role='searchbox'
+              placeholder='Search Items'
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}  
+            />
+          <button typ="submit">Publish</button>
+        </form> 
+        <section className="ads">
+          <AdsList ads={filteredAds}/>
+        </section>
+      </main>
    )
  }
 
