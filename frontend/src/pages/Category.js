@@ -1,5 +1,5 @@
 import { useEffect, useState  } from "react";
-import { useLocation } from "react-router-dom"
+import { useLocation, Link, NavLink } from "react-router-dom"
 import AdsList from '../components/AdsList';
 import './Category.css';
 
@@ -27,15 +27,10 @@ const Category = ({ads}) => {
       case("klader"): return "clothes"
     }  
   }
-    
+       
 
-  const handelSearch = () =>{
-    const items= filteredAds.filter(item => ((item.item).toLowerCase()).includes
-      (search.toLocaleLowerCase()))
-  }
-     
    return (
-      <main>
+      <>
         <section className= {getClassName(slug)}>
           <div className="hero-category-text text-dark">
           { 
@@ -47,21 +42,13 @@ const Category = ({ads}) => {
           }
           </div>
         </section>
-        <form className='searchForm' onSubmit={handelSearch}>
-            <input
-              id='search'
-              type='text'
-              role='searchbox'
-              placeholder='Search Items'
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}  
-            />
-          <button typ="submit">Publish</button>
-        </form> 
+        <nav className="back-link">
+              <Link className="text-dark" to="/"> Tillbaka </Link>
+        </nav>
         <section className="ads">
-          <AdsList ads={filteredAds}/>
+        {slug? <AdsList ads={filteredAds} /> : <AdsList ads={ads} />}
         </section>
-      </main>
+      </>
    )
  }
 

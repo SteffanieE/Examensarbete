@@ -30,9 +30,9 @@ const Footer = () => {
         <div className='footer-block'>
           <h4 className='fs-300'>SOCIALA MEDIER</h4>
           <div className='flex block-content media-icons'>
-            <FaInstagram />
-            <FaFacebook  />
-            <FaPinterest />
+            <FaInstagram size="32px" />
+            <FaFacebook size="32px" />
+            <FaPinterest size="32px"/>
           </div>
           
         </div>

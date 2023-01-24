@@ -17,6 +17,7 @@ import MyPage from './pages/MyPage';
 import Category from './pages/Category';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import FavoriteAds from './pages/FavoriteAds';
 
 function App() {
 
@@ -59,9 +60,11 @@ function App() {
                   <Route path="/login" element={<Login />}/>
                   <Route path="/skapa-konto" element={<Register />}/>
                   <Route path="/skapa-annons" element={<CreateAd />}/>
-                  <Route path='/mina-sidor' element={<MyPage />}/>   
-                  <Route path="/kategori/:slug" element={<Category ads={ads} />} />
-                  <Route path="/kategori/:slug/:id" element={<SingleAd />} />
+                  <Route path='/mina-sidor' element={<MyPage />}/> 
+                    <Route path='/mina-sidor/sparade-annonser' element={<FavoriteAds />} />
+                  <Route path="/kategori" element={<Category ads={ads} />} />  
+                    <Route path="/kategori/:slug" element={<Category ads={ads} />} />
+                    <Route path="/kategori/:slug/:id" element={<SingleAd />} />
                   <Route path="/*" element={<NotFound />} />                  
               </Routes>
             </main>

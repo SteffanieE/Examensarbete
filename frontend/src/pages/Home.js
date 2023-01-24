@@ -32,7 +32,7 @@ const Home = ({ads}) => {
         </div>
       </nav>
 
-      <section className='flex text-block bg-accent'>
+      <section className='flex text-block bg-secondary'>
         <div className='flex'>
           <h2 className='fs-600'>Det ska vara LÄTT att göra RÄTT</h2>
           <p>Nästan allt du inte längre berhöver kan komma till användning på annat sätt. Åtetrvinn dina tomma förpackningar och lämna bort dina gamla prylar och kläder, 

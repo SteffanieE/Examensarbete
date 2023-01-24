@@ -1,7 +1,7 @@
 .single-ad-page{
     position: relative;
     margin: auto;
-    padding-top: 150px;
+    padding-top: 100px;
     padding-bottom: 100px;
     padding-inline: 2em;
     margin-inline: auto;
@@ -9,38 +9,63 @@
 
 
 .single-ad-container{
+
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  height: 500px;
+  width: 900px;
+  border-radius: 2px;
+   
+
+}
+
+.single-ad-container .heart-icon-container{
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  
+ 
+}
+
+  .date-city{
+
+    height: 30px;
+    
+  }
+ 
+
+ 
+
+.single-ad-container img{
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+  
+.ad-info-part{
     position: relative;
     display: flex;
     flex-direction: column;
-   
-    margin: auto;
-    min-height: 470px;
- 
-    padding: 40px;
-    max-width: 500px;
-
-}
-
-
-
-  
-.ad-img-part, 
-.ad-info-part{
-    width: 100%;
-    padding:30px;
+    justify-content: center;
+    row-gap: 30px;
+    width: 50%;
     text-align: left;
+    padding: 0 30px 30px 30px;
 }
 
-.ad-img-part img{
-    object-fit: cover;
-    height: 100%;
+
+
+.description{
+  border: 1px solid rgb(224, 222, 222);
+  border-radius: 2px;
+  height: 40%;
+
 }
-  
-.ad-info-part{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+
 
 
 
@@ -55,17 +80,11 @@
 @media screen and (min-width:800px){
     /* For desktop: */
   
-    .single-ad-container{
-      flex-direction: row;
-      max-width: 800px;
-    }
+   
   
     
 
-    .ad-img-part, 
-    .ad-info-part{
-        max-width: 50%; 
-    }
+    
    
 }
   

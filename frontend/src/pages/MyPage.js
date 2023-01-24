@@ -1,8 +1,9 @@
 import { useEffect, useState, useContext  } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.js";
-import { FavoriteListContext } from '../context/FavoriteListContext';
-import AdsList from '../components/AdsList';
+
+import {TbTrash} from "react-icons/tb";
+
 import moment from "moment";
 import axios from '../api/axios';
 import './MyPage.css';
@@ -11,7 +12,6 @@ import './MyPage.css';
 const MyPage = () => {
 
     const { currentUser, logout, deleteUser } = useContext(AuthContext);
-    const {cartItems}  = useContext(FavoriteListContext)
     const [ads, setAds] = useState([]);
     const id = currentUser.id;
 
@@ -53,8 +53,8 @@ const MyPage = () => {
     }
 
      return (
-        <main className='container my-page'>
-            <section className='user-section'> 
+        <>
+            <section className='container user-section'> 
                 <h1>Välkommen {currentUser.email}</h1>
                 <p>Tack för att du bidrar. Tillsammans kan vi alla bli än starkare miljöhjältar!</p>
                 <div className='user-buttons'>
@@ -62,9 +62,10 @@ const MyPage = () => {
                     <button className='small-button-primary delete' onClick={() => deleteUser(id)}>Ta bord användare</button>
                 </div>
             </section>
-            <section className="my-ads-section">
-                <h2>Mina annonser</h2>   
-                <table className='my-ads-tabel'>
+            <section className="container my-ads-section">
+                 
+                <h2 className="">Mina annonser</h2>
+                <table className='my-ads-tabel fs-200'> 
                     <tbody>
                         <tr>
                             <th>Datum</th>
@@ -87,21 +88,15 @@ const MyPage = () => {
                                 <p>{ad.street}</p>
                                 <p>{ad.zipcode}</p>
                                 <p>{ad.city}</p>
-                            </td>
-                
-                            <td><Link className='small-button-primary' to={`/skapa-annons?edit=2`} state={ad}>Uppdatera</Link>  </td>
-                            <td><button className='small-button-primary delete' onClick={() => handleDelete(ad.id)}>Radera</button> </td>     
-                                
+                            </td>      
+                            <td><Link className='small-button-primary' to={`/skapa-annons?edit=2`} state={ad}>Uppdatera</Link> </td>
+                            <td><TbTrash size="30px" strokeWidth="1" onClick={() => handleDelete(ad.id)} /></td>       
                         </tr>
                         ))}
                     </tbody>
                 </table>
-            </section>  
-            <section className="favorit-ads-list">
-                <h2>Mina sparade annonser</h2> 
-                <AdsList className="avorit-ads-list" ads={cartItems} />
-            </section>              
-       </main>
+            </section>                
+       </>
      )
 
 

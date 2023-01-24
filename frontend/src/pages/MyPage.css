@@ -1,17 +1,18 @@
 .my-page section{
-  margin-top: 80px;
+  margin-top: 2rem;
+  padding:0 5%;
 }
 
 .my-page h2{
   margin-bottom: 15px;
 }
 
-
 .user-section{
-
   display: flex;
   flex-direction: column;
   gap: 30px;
+  margin-top: 70px;
+  margin-bottom: 60px;
 }
 
 .user-buttons button{
@@ -20,8 +21,6 @@
 
 .my-ads-section{
   overflow-x: auto;
-  
- 
 }
 
 .my-ads-tabel{
@@ -29,32 +28,28 @@
   border-spacing: 0;
   width: 100%;
   border-radius: 10px;
-  border: 1px solid rgb( var(--clr-light-green) );
-   
+  border: 1px solid rgb( var(--clr-light-green) ); 
+  margin-bottom: 50px; 
 }
+
 tr:nth-child(even){background-color: #f2f2f2}
 
-table, th {  
+table, 
+th {  
     border-bottom: 3px solid rgb( var(--clr-light-green) );
     text-align: left;
-  }
+}
   
-  table {
+table {
 
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    padding: 5px;
-  }
+  border-collapse: collapse;
+  width: 100%;
+}
 
-  tr{
-    border-bottom: 1px solid rgb( var(--clr-light-green) );
-  }
+th, td {
+  padding: 5px;
+}
 
-  .avorit-ads-list .card {
-
-    background-color: blue;
-
-  }
+tr{
+  border-bottom: 1px solid rgb( var(--clr-light-green) );
+}

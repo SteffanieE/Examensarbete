@@ -3,7 +3,11 @@ import { Link, useLocation} from "react-router-dom";
 import moment from "moment";
 import Popup from 'reactjs-popup';
 import axios from '../api/axios';
+import { FavoriteListContext } from '../context/FavoriteListContext';
+import { TbHeart } from "react-icons/tb";
 import './SingleAd.css';
+
+
 
 import { AuthContext } from "../context/AuthContext.js";
 
@@ -13,6 +17,8 @@ const SingleAd = () => {
   const location = useLocation();
   const AdId = location.pathname.split("/")[3];
   const { currentUser } = useContext(AuthContext);
+  const {cartItems, addItem} = useContext(FavoriteListContext);
+
 
 
   const getText = (html) =>{
@@ -35,22 +41,29 @@ const SingleAd = () => {
 
 
   return (
-    <main className="single-ad-page bg-accent">
+    
       <div className="single-ad-container bg-white">
     
-        <div className="img">
-            <img src={`/../upload/${ad.img_url}`} alt={ad.title} />
-        </div>
+       
+        <img src={`/../upload/${ad.img_url}`} alt={ad.title} />
+       
         <section className="ad-info-part">
-          <div>
+          <div className="date-city">
             <p className="fs-200">Inlagd: {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
             <p>{ad.city}</p>
+            <div className='text-accent heart-icon-container'>
+                {cartItems.find(x => x.id === ad.id)
+                  ? <TbHeart className='heart' onClick={(e) => {e.preventDefault(); addItem(ad)}} size="36px" strokeWidth="1" />
+                  : <TbHeart  onClick={(e) => {e.preventDefault(); addItem(ad)}} size="36px" strokeWidth="1" />
+                }
+            </div>
           </div>
+        
           <h1>{ad.title}</h1>
-          <p>{getText(ad.description)}</p>
+          <p className="description">{getText(ad.description)}</p>
           {currentUser === null
             ? <Link className="link" to={`/login`}>Loga in för mer info</Link>
-            : <Popup  trigger={<button className="large-button-primary">HÄMTA</button>} position="center">
+            : <Popup  trigger={<button className="large-button">HÄMTA</button>} position="center">
                 {close => (
                   <div className="pop">
                   <p className="fs-400">Varan finns på följande adress:</p>
@@ -68,7 +81,7 @@ const SingleAd = () => {
           }  
         </section>
       </div>
-    </main>
+   
   )
 }
 

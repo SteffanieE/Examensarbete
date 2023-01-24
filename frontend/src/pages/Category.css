@@ -32,7 +32,13 @@
 }
 
 .hero-category-text h1{
-   
     text-align: center;
-   
 }
+
+
+.back-link {
+    margin: 10px 30px 0 30px;
+    color: var(--clr-dark);
+    text-decoration: none;
+}
+
