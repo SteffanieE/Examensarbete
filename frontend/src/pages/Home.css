@@ -83,7 +83,7 @@
 
 .text-block div{
     padding: 2rem;
-    max-width: 700px;
+    max-width: 750px;
     flex-direction: column;
     justify-content: center;
     gap: 2rem;

@@ -12,7 +12,7 @@ export const AuthContexProvider = ({ children }) => {
     JSON.parse(localStorage.getItem('user')) || null
   );
 
-
+  
   //Saves user name and password in useState and localStorage
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser));
@@ -36,12 +36,12 @@ export const AuthContexProvider = ({ children }) => {
     try {
       const res = await axios.delete(`/auth/${userId}`);
       navigate("/")
+      console.log(res)
       } catch (err) {
       console.log(err);  
     }  
     setCurrentUser(null);
   }
-
 
   return (
     <AuthContext.Provider value={{ currentUser, login, logout, deleteUser }}>

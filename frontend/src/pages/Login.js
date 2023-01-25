@@ -33,8 +33,8 @@ const Login = () => {
     };
 
   return (
-      <main className=" login-page bg-accent">
-        <div className="login-container bg-white">
+      <main className=" login-page">
+        <div className="login-container">
           <section className="signup-part">
             <h1 className="fs-500">Skapa konto</h1>
             <Link className="text-dark">Skapa konto med Google</Link>

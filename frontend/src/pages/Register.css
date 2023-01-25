@@ -8,6 +8,7 @@
 }
 
 .register-container{
+    box-shadow: 0 -10px 50px 0 rgb(0 0 0 / 10%);
     position: relative;
     display: flex;
     flex-direction: column;

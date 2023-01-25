@@ -34,8 +34,8 @@ const Register = () => {
     }
     
     return (
-        <main className="register-page bg-accent">
-            <section className="register-container bg-white">
+        <main className="register-page">
+            <section className="register-container">
                 <h1>Skapa nytt konto</h1>
                 <form onSubmit={handelSubmit}>
                     <label>Email</label>

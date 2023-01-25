@@ -8,7 +8,7 @@
   --clr-dark: 51, 61, 41, 1;
   --clr-light-green: 194, 197, 170, 1;
   --clr-white: 255, 255, 255, 1;
-  --clr-light-pink: 254, 247, 229, 1;
+  --clr-light-pink: 227, 229, 220;
 
   
 
@@ -140,7 +140,7 @@ li{
 .bg-dark { background-color: rgb( var(--clr-dark) );}
 .bg-accent { background-color: rgb( var(--clr-light-green) );}
 .bg-white { background-color: rgb( var(--clr-white) );}
-.bg-secondary  {background-color: rgb( var(--clr-light-pink) );}
+
 
 .text-dark { color: rgb( var(--clr-dark) );}
 .text-accent { color: rgb( var(--clr-light-green) );}
