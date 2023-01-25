@@ -1,11 +1,35 @@
+import { useEffect, useState  } from "react";
+import axios from '../api/axios';
 import {  NavLink } from 'react-router-dom';
 import Hero from '../components/Hero';
 import AdsList from '../components/AdsList';
 import './Home.css';
 
 
-const Home = ({ads}) => {
+const Home = () => {
   const date = new Date().toLocaleString().split(",")[0];
+
+
+  const [ads, setAds] = useState([]);
+ 
+  //GET all ads from backend
+  useEffect(() => {    
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/ads`);
+        setAds(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  },[]);
+
+
+  
+
+
+
 
   return (
     <>
@@ -49,71 +73,6 @@ const Home = ({ads}) => {
     </>
   )
 }
-
-
-
-
-
-{/* 
-
-// const menuItems = [...new Set(ads.map((ad) => ad.category))];
-       { menuItems.map((category, id) => {
-          return (
-            <Link
-              className="btn-dark text-white p-1 px-2 mx-5 btn fw-bold"
-            
-              to=`/annonser`
-            >
-              
-            {category}
-          
-            
-          </Link>
-
-    
-   
-        
-          );
-        })}
- */}
-
-
- {/* 
-      {menuItems.map((category, id) => {
-        return (
-
-          <div>
-          <p>...</p>
-        <Link to={`/annonser/`}  key={id}>
-          {category}
-        </Link>
-        <p>...</p>
-        </div>
-        )
-      })}
- */}
-      
-
-    
-      {/* <div className="ads">
-        {activeCategory? <AdsList ads={newAds} /> : <AdsList ads={ads} />}
-      </div> */}
-        
-
-
-     /*  const menuItems = [...new Set(ads.map((ad) => ad.category ))];
-      console.log (menuItems)
-    
-      
-    
-      console.log(ads)
-    
-      const result = ads.map((a) => {
-        return {category:a.category, slug:a.slug}
-      });
-      console.log(result); */
-    
-  
 
   
 export default Home;

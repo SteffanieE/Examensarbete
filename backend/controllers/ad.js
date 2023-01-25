@@ -1,6 +1,6 @@
 import { db } from "../db.js";
 
-
+// If request includes user Id GET ads from the database on that user otherwise GET ALL ads.
 export const getAds = (req, res) => {
 
   const query = req.query.id
@@ -14,7 +14,7 @@ export const getAds = (req, res) => {
   });
 };
 
-
+// GET single ad with ID
 export const getAd = (req, res) => {
   
   const query =
@@ -27,7 +27,7 @@ export const getAd = (req, res) => {
   });
 };
 
-
+// Save ad in database
 export const postAd = (req, res) => {
     
   const q =
@@ -54,7 +54,7 @@ export const postAd = (req, res) => {
 };
 
 
-
+//DELETE ad from database with ID
 export const deleteAd = (req, res) => {
 
   const postId = req.params.id;
@@ -68,7 +68,7 @@ export const deleteAd = (req, res) => {
   
 };
 
-
+//UPPDATE ad I database with ID
 export const updateAd = (req, res) => {
 
   const adId = req.params.id;
@@ -94,7 +94,7 @@ export const updateAd = (req, res) => {
 
 
 
-
+// GET alla ads by category slug  
 export const getAdsCategory = (req, res) => {
 
   const query = req.query.slug

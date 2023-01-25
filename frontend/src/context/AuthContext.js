@@ -4,51 +4,43 @@ import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
-
-
 export const AuthContexProvider = ({ children }) => {
   const navigate = useNavigate();
 
+  
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem('user')) || null
   );
 
+
+  //Saves user name and password in useState and localStorage
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser]);
 
+
+  //Sends request to the backend to loggin user with matching email and password.
   const login = async (inputs) => {
     const res = await axios.post("/auth/login", inputs);
-    console.log(res)
     setCurrentUser(res.data);
   };
 
-  const logout = async (inputs) => {
-    // await axios.post("/auth/logout");
+  //Sets useState to null  
+  const logout = async () => {
     setCurrentUser(null);
     navigate("/")
   };
 
+  //Sends request to the backend to DELETE user with matching id.
   const deleteUser = async (userId) =>{
-    console.log(userId)
-
-   
     try {
-       
-        const res = await axios.delete(`/auth/${userId}`);
- 
-        navigate("/")
-        console.log(res)
-        } catch (err) {
-        console.log(err);
-
-        
+      const res = await axios.delete(`/auth/${userId}`);
+      navigate("/")
+      } catch (err) {
+      console.log(err);  
     }  
-    
     setCurrentUser(null);
   }
-
-
 
 
   return (

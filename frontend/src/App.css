@@ -10,7 +10,9 @@
   --clr-white: 255, 255, 255, 1;
   --clr-light-pink: 254, 247, 229, 1;
 
+  
 
+  --clr-light-pink: 254, 247, 229, 1;
   /* font-sizes */
   --fs-900: 9.375rem;
   --fs-800: 6.25rem;
@@ -23,7 +25,6 @@
 
 
   /* font-families */
-  --ff-serif: "Bellefair", serif;
   --ff-indie-flower-cursiv: 'Indie Flower', cursive;
   --ff-sans-normal: "Barlow", sans-serif;
 
@@ -33,8 +34,6 @@
   font-family: 'Indie Flower', cursive;
   
 }
-
-
 
 
 
@@ -85,6 +84,13 @@ picture {
   height: auto;
 }
 
+
+main{
+  position: relative;
+  min-height: 30vw;
+  
+}
+
 /* make form elements easier to work with */
 input,
 button,
@@ -102,11 +108,13 @@ li{
 }
 
 
+
 /* ------------------- */
 /* Utility classes     */
 /* ------------------- */
 
 /* general */
+
 
 .flex {
   display: flex;
@@ -122,14 +130,6 @@ li{
   padding-inline: 2em;
   margin-inline: auto;
   max-width: 1200px;
-  
-}
-
-main{
-  position: relative;
-
-  min-height: 30vw;
-  margin: auto;
   
 }
 
@@ -154,10 +154,6 @@ main{
 .ff-indie-flower { font-family: var(--ff-indie-flower-cursiv); } 
 .ff-sans-normal { font-family: var(--ff-sans-normal); } 
 
-.letter-spacing-1 { letter-spacing: 4.75px; } 
-.letter-spacing-2 { letter-spacing: 2.7px; } 
-.letter-spacing-3 { letter-spacing: 2.35px; } 
-
 .uppercase { text-transform: uppercase; }
 
 .fs-900 { font-size: var(--fs-900); }
@@ -181,14 +177,13 @@ main{
 
 
 /* ------------------- */
-/* Compontents         */
+/*        BUTTONS      */
 /* ------------------- */
 
 .large-button {
   position: relative;
   cursor: pointer;
   border: none;
-  /* z-index: 1; */
   place-items: center;
   padding: .75em 2em;
   border-radius: 0 15px 15px 15px;
@@ -196,7 +191,6 @@ main{
   color: rgb( var(--clr-white ) );
   background-color: rgb( var(--clr-dark) );
 }
-
 
 .large-button:hover {
   opacity: 0.8;
@@ -215,6 +209,10 @@ main{
   background-color: rgb( var(--clr-dark) );
 }
 
+.large-button-primary:hover {
+  opacity: 0.8;
+}
+
 .small-button-primary {
   position: relative;
   cursor: pointer;
@@ -229,41 +227,13 @@ main{
   background-color: rgb( var(--clr-light-green) );
 }
 
-
-.large-button-primary:hover {
-  opacity: 0.8;
-}
-
-
-
-.medium-button-primary {
-  position: relative;
-  cursor: pointer;
-  border: none;
-  width: 100%;
-  border-radius: 2px;
-  place-items: center;
-  padding: .75em 1em;
-  text-decoration: none;
-  color: rgb( var(--clr-white ) );
-  background-color: rgb( var(--clr-dark) );
-}
-
-
-.medium-button-primary:hover {
+.small-button-primary:hover {
   opacity: 0.8;
 }
 
 .delete{
   background-color: rgb(161, 16, 16);
-
 }
-
-
-
-
-
-
 
 
 .small-button-primary:hover {
@@ -271,12 +241,17 @@ main{
 }
 
 
+/* ----------------------------------------- */
+/*               Compontents                 */
+/* ----------------------------------------- */
 
 
 
 
 
-
+/* ------------------- */
+/*       HEADER        */
+/* ------------------- */
 
 .primary-header{
   position: relative;
@@ -289,29 +264,28 @@ main{
 }
 
 
-/*------------------------------------*/
+
+/* ------------------- */
+/* NAVBAR              */
+/* ------------------- */
 
 .container-nav {
-
   margin: 0 auto;
- 
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .navbar {
   height: 60px;
   position: relative;
- 
 }
 
 .menu-icon {
   display: none;
 }
-
 
 .nav-elements ul {
   display: flex;
@@ -346,7 +320,6 @@ main{
   height: 2px;
 }
 
-
 .count{
   font-size: 13px;
   z-index: 1;
@@ -376,7 +349,7 @@ main{
     z-index: 1;
     right: 0;
     top: 60px;
-    background-color: #fef7e5;
+    background-color: rgb( var(--clr-light-pink) );
     width: 0px;
     height: auto;
     transition: all 0.3s ease-in;
@@ -400,13 +373,10 @@ main{
   }
 }
 
-/* Hover effect on activ link
-.primary-navigation a.active {
-  background-color: blueviolet;
-} */
 
-
-
+/* ------------------- */
+/* HERO                */
+/* ------------------- */
 
 
 .hero-image {
@@ -430,52 +400,42 @@ main{
 }
 
 
-
-
-
-
-  .card-buttons{
-    position: relative;
+@media screen and (min-width:800px){
+  /* For desktop: */
+  .hero-text {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    margin: 0;
   }
+}
 
 
+
+
+/* ------------------- */
+/* ADS-LIST            */
+/* ------------------- */
+
+.card-buttons{
+  position: relative;
+}
 
 .ads{
-  
   margin-top: 100px;
-
+  margin-bottom: 50px;
 }
 
 .ads-list .heart-icon-container{
   position: absolute;
   z-index: 1;
-  right: 0;
-
+  right: 5px;
+  bottom: 0;
 }
 
 .heart {
   fill: rgb( var(--clr-light-green) );
 }
-
-
-/* .ads-list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 50px;
-}
-
-.card {
-  display: flex;
-  width: 300px;
-  box-shadow: 0 0px 20px 0 rgb(0 0 0 / 10%);
-  
-  list-style: none;
-  position: relative;
-  text-align: center;
-  flex-direction: column;
-} */
 
 
 .ads-list{
@@ -490,17 +450,9 @@ main{
 .card{
   line-height: 19px;
   min-width: 0;
-
   padding-left: 38px;
   padding-bottom: 42px;
 }
-
-
-
-
-
-
-
 
 
 .ad-info {
@@ -516,77 +468,71 @@ main{
 }
 
 .ad-image {
-  width: 100%;
+  width: 300px;
+  padding: 5px 0;
+  height: 400px;
+  justify-content: center;
 }
 
 
 .ad-image img{
   width: 100%;
-  max-height: 250px;
+  height: 100%;
   object-fit: cover;
 }
 
-/* @media (max-width: 600px) {
-  .card {
-    flex: 1 46%;
-  }
-} */
 
-.error-message{
-  margin-top: 20px;
-  color: red;
+/* ------------------- */
+/*      FOOTER         */
+/* ------------------- */
+
+footer{
+  margin: auto;
+  padding: 20px
+}
+
+.footer-container{
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 
+.footer-block{
+  display: inline-block;
+  padding: 0px 8px 8px;
+  vertical-align: top; 
+  text-align: center;
+}
 
-  
+.footer-block h4{
+  font-weight: 600;
+}
 
+.block-content {
+  padding: 10px 0px;
+  font-size: var(--fs-300);
+}
 
-  /* For tablets: */
-  
-
-
-
-
- 
-  /* For desktop: */
-
-
-/*---------------------------------------------------------*/
-
-
+.media-icons{
+  justify-content: center;
+} 
 
 @media screen and (min-width:600px){
-  /* For tablets: */
-
  
-  .ads-list{
-    justify-content: left;
+  .footer-container{
+      flex-direction: row;
+      justify-content: space-around;
   }
- 
-  
-    
-  
-}
 
-
-
-
-
-@media screen and (min-width:800px){
-  /* For desktop: */
-
- 
-
-  .hero-text {
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    margin: 0;
-
+  .media-icons{
+      justify-content: left;
   }
+
   
-    
-  
+  .footer-block{
+      text-align: left;
+  }
+
 }
 

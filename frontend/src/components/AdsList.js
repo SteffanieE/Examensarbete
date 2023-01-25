@@ -7,10 +7,10 @@ import moment from "moment";
 
 const AdsList = ({ads}) => {
   
-  const {cartItems, addItem} = useContext(FavoriteListContext);
+  const {listItems, addItem} = useContext(FavoriteListContext);
 
   return (
-      <ul className='container ads-list bg-white'>
+      <ul className=' ads-list bg-white'>
         {
           ads.map((ad) => 
           <li className='card' key={ad.id}>
@@ -25,15 +25,14 @@ const AdsList = ({ads}) => {
               <h1>{ad.title}</h1>
             </div>
               
-              <div className='card-buttons'>
+              <div className='card-buttons flex'>
                 <Link className="link small-button-primary fs-200" to={`/kategori/${ad.slug}/${ad.id}`}>MER INFO</Link>
                 
                 <div className='text-accent heart-icon-container'>
-                  {cartItems.find(x => x.id === ad.id)
+                  {listItems.find(x => x.id === ad.id)
                     ? <TbHeart className='heart' onClick={(e) => {e.preventDefault(); addItem(ad)}} size="36px" strokeWidth="1" />
                     : <TbHeart  onClick={(e) => {e.preventDefault(); addItem(ad)}} size="36px" strokeWidth="1" />
                   }
-
                 </div>
               </div>
           </li>

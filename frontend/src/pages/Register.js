@@ -14,10 +14,13 @@ const Register = () => {
 
     const [error, setError] = useState(null)
 
+    //Saves name and password in inputs with useState
     const handelChange = e =>{
         setInputs(prev=>({...prev, [e.target.name]: e.target.value}))
     }
 
+    
+    //Sends username and password to the backend
     const handelSubmit = async e =>{
         e.preventDefault()
         try{

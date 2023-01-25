@@ -31,7 +31,10 @@
 }
 
 .register-container h1 {
-
     margin-bottom: 20px;
+}
 
+.error-message{
+    margin-top: 20px;
+    color: red;
 }

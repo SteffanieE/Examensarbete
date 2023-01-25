@@ -14,11 +14,12 @@ const Login = () => {
       password: "",
     }); 
 
-    
+    //Saves name and password in inputs with useState
     const handleChange = (e) => {
       setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
+    //sends username and password to the backend
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {

@@ -3,13 +3,10 @@ import { Link, useLocation} from "react-router-dom";
 import moment from "moment";
 import Popup from 'reactjs-popup';
 import axios from '../api/axios';
+import { AuthContext } from "../context/AuthContext.js";
 import { FavoriteListContext } from '../context/FavoriteListContext';
 import { TbHeart } from "react-icons/tb";
 import './SingleAd.css';
-
-
-
-import { AuthContext } from "../context/AuthContext.js";
 
 const SingleAd = () => {
 
@@ -17,15 +14,16 @@ const SingleAd = () => {
   const location = useLocation();
   const AdId = location.pathname.split("/")[3];
   const { currentUser } = useContext(AuthContext);
-  const {cartItems, addItem} = useContext(FavoriteListContext);
+  const {listItems, addItem} = useContext(FavoriteListContext);
 
 
-
+  // Converts description string to text
   const getText = (html) =>{
     const doc = new DOMParser().parseFromString(html, "text/html")
     return doc.body.textContent
   }
 
+  //Sends a GET requests to backend for the ad that matches the id
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,9 +40,7 @@ const SingleAd = () => {
 
   return (
     
-      <div className="single-ad-container bg-white">
-    
-       
+      <div className="single-ad-container bg-white"> 
         <img src={`/../upload/${ad.img_url}`} alt={ad.title} />
        
         <section className="ad-info-part">
@@ -52,7 +48,7 @@ const SingleAd = () => {
             <p className="fs-200">Inlagd: {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
             <p>{ad.city}</p>
             <div className='text-accent heart-icon-container'>
-                {cartItems.find(x => x.id === ad.id)
+                {listItems.find(x => x.id === ad.id)
                   ? <TbHeart className='heart' onClick={(e) => {e.preventDefault(); addItem(ad)}} size="36px" strokeWidth="1" />
                   : <TbHeart  onClick={(e) => {e.preventDefault(); addItem(ad)}} size="36px" strokeWidth="1" />
                 }

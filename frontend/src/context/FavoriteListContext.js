@@ -4,32 +4,24 @@ export const FavoriteListContext = createContext();
 
 export function FavoriteListProvider ({children}) {
 
-    const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem 
+    const [listItems, setListItems] = useState(JSON.parse(localStorage.getItem 
     ('favoritelist')) || []);
     
 
+    // Saves list in localStorage and useState
     useEffect(() => {
-    localStorage.setItem('favoritelist', JSON.stringify(cartItems));
-    }, [cartItems])
+    localStorage.setItem('favoritelist', JSON.stringify(listItems));
+    }, [listItems])
 
-
+    //Checks if the Item already exist in favoriteList. If true the item will be removed otherwise add to the list.
     const addItem = (newItem) => {
-    
-    const list = cartItems.filter((item) => item.id !== newItem.id );
-    //Kontrollerar om varan redan finns i varukorgen. OM varan redan finns öka kvantitet annars lägger till i listan.
-    const exist = cartItems.find(x => x.id === newItem.id);
-    
-    exist? setCartItems(list)
-
-    : setCartItems((cartItems) => [...cartItems, {...newItem}])
-        
+    const list = listItems.filter((item) => item.id !== newItem.id );
+    const exist = listItems.find(x => x.id === newItem.id);
+    exist? setListItems(list) : setListItems((listItems) => [...listItems, {...newItem}])    
     } 
-
     
-
-
     return (
-        <FavoriteListContext.Provider value={{ cartItems, addItem }}>
+        <FavoriteListContext.Provider value={{ listItems, addItem }}>
         {children}
         </FavoriteListContext.Provider>
     );

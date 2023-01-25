@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './NotFound.css';
 
+
+//This page is displayed if the url does not exist
 const NotFound = () => {
   return (
     <section className='flex not-found-page'>

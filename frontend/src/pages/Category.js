@@ -1,22 +1,31 @@
+import axios from '../api/axios';
 import { useEffect, useState  } from "react";
-import { useLocation, Link, NavLink } from "react-router-dom"
+import { useLocation, Link } from "react-router-dom"
 import AdsList from '../components/AdsList';
 import './Category.css';
 
 
-const Category = ({ads}) => {
-
-  const [filteredAds, setFiltredAds] = useState([]);
-  const [search, setSearch] = useState('');
+const Category = ( ) => {
+  const [ads, setAds] = useState([]);
   const location = useLocation();
   const slug = location.pathname.split("/")[2];
 
-
-//Filters the ads depending on the page's slug and saves the filtered list.
-  useEffect(() =>{
-    const filteredList = ads.filter(ad  => ad.slug === slug)
-    setFiltredAds(filteredList)
-  }, []); 
+//Sends a GET request with page slug to backend
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const res = await axios.get(`/ads/category`, {
+                params: {
+                    slug: slug
+                }
+            });
+            setAds(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    fetchData();
+  }, []);
 
 
  //Sets className on hero-category-text depending on the page's slug
@@ -28,7 +37,6 @@ const Category = ({ads}) => {
     }  
   }
        
-
    return (
       <>
         <section className= {getClassName(slug)}>
@@ -46,59 +54,10 @@ const Category = ({ads}) => {
               <Link className="text-dark" to="/"> Tillbaka </Link>
         </nav>
         <section className="ads">
-        {slug? <AdsList ads={filteredAds} /> : <AdsList ads={ads} />}
+          <AdsList ads={ads} />
         </section>
       </>
    )
  }
 
-
-
- /* 
-    useEffect(() => {
-      const fetchData = async () => {
-       
-          try {
-            
-              const res = await axios.get(`/ads/category`, {
-                  params: {
-                      slug: category
-                  }
-              });
-
-              setAds(res.data);
-           
-              console.log(res.data)
-          } catch (err) {
-              console.log(err);
-          }
-      };
-      fetchData();
-    }, []); */
- 
-
- 
-
-    
-{/*  
-      ads.filter(ad  => ad.category === activeCategory).map((ad) => (
-          <div className="ad" key={ad.id}>
-            <Link className="link" to={`/annonser/${ad.id}`}>
-              <h1>{ad.title}</h1>
-            </Link>
-            <p>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</p>
-            <div className="img">
-              <img src={`../upload/${ad.img_url}`} alt={ad.title} />
-            </div>
-            <p>{ad.category}</p>
-            <p>{ad.city}</p>
-            <p>{getText(ad.description)}</p>
-          </div>
-        )) */}
-
 export default Category
-
-
-
-
-

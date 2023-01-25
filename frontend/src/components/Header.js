@@ -4,7 +4,6 @@ import Navbar from './Navbar'
 import logo from '../images/logo.png'
 
 
-
 const Header = () => {
 
   return (

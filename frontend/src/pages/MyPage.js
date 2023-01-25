@@ -1,9 +1,7 @@
 import { useEffect, useState, useContext  } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.js";
-
 import {TbTrash} from "react-icons/tb";
-
 import moment from "moment";
 import axios from '../api/axios';
 import './MyPage.css';
@@ -14,7 +12,6 @@ const MyPage = () => {
     const { currentUser, logout, deleteUser } = useContext(AuthContext);
     const [ads, setAds] = useState([]);
     const id = currentUser.id;
-
 
     //Sends request to the backend to get all ads that match the logged in user's id.
     useEffect(() => {
@@ -35,7 +32,7 @@ const MyPage = () => {
         fetchData();
     }, [id]);
 
-    // Converts string to text
+    // Converts description string to text
     const getText = (html) =>{
         const doc = new DOMParser().parseFromString(html, "text/html")
         return doc.body.textContent
@@ -62,8 +59,7 @@ const MyPage = () => {
                     <button className='small-button-primary delete' onClick={() => deleteUser(id)}>Ta bord användare</button>
                 </div>
             </section>
-            <section className="container my-ads-section">
-                 
+            <section className="container my-ads-section">       
                 <h2 className="">Mina annonser</h2>
                 <table className='my-ads-tabel fs-200'> 
                     <tbody>
@@ -99,36 +95,6 @@ const MyPage = () => {
        </>
      )
 
-
-
-            {/* <h2>Sparade annonser</h2> 
-                    <table className='my-ads-tabel'>
-                        <tr>
-                            <th>Datum:</th>
-                            <th>Titel:</th>
-                            <th>Bild:</th>
-                            <th>Kategori:</th>
-                            <th>Beskrivning:</th>
-                            <th>Hämtningsadress:</th>     
-                        </tr>
-                    {cartItems.map((ad) => (
-                    
-                        <tr className="my-ads-rows" key={ad.id}>                        
-                            <td>Datum {moment(ad.date).format("YYYY-MM-DD HH:mm")}</td>
-                            <td>{ad.title}</td>
-                            <td><img src={`../upload/${ad.img_url}`} alt={ad.title} height="50" width="50" /></td>
-                            <td>{ad.category}</td>
-                            <td>{getText(ad.description)}</td>
-                            <td>
-                                <p>{ad.street}</p>
-                                <p>{ad.zipcode}</p>
-                                <p>{ad.city}</p>
-                            </td>
-                        </tr>
-                    ))}
-
-
-                    </table> */}
 }
 
 export default MyPage

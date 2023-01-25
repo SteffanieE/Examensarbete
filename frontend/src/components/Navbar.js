@@ -7,13 +7,10 @@ import {TbCameraPlus, TbHeart, TbUserCircle, TbMenu2 } from "react-icons/tb";
 
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
-  const { cartItems } = useContext(FavoriteListContext)
+  const { listItems } = useContext(FavoriteListContext)
   const [showNavbar, setShowNavbar] = useState(false)
 
-
-
-  console.log(cartItems.length)
-
+  //Opens and closes navbar when pressing the menu icon. 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar)
   }
@@ -34,7 +31,7 @@ const Navbar = () => {
             <li>
             { currentUser === null
               ? <span className=''></span>
-              : <span className='count bg-accent'>{cartItems.length}</span>
+              : <span className='count bg-accent'>{listItems.length}</span>
             }
               <NavLink className="text-dark" to="/mina-sidor/sparade-annonser"><TbHeart size="36px" strokeWidth="1" />Sparade annonser </NavLink>
             </li>

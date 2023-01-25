@@ -1,15 +1,14 @@
 .single-ad-page{
-    position: relative;
-    margin: auto;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-inline: 2em;
-    margin-inline: auto;
+  position: relative;
+  margin: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-inline: 2em;
+  margin-inline: auto;
 }
 
 
 .single-ad-container{
-
   position: relative;
   display: flex;
   flex-direction: row;
@@ -19,8 +18,6 @@
   height: 500px;
   width: 900px;
   border-radius: 2px;
-   
-
 }
 
 .single-ad-container .heart-icon-container{

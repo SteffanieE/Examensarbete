@@ -1,12 +1,15 @@
 
 .not-found-page{
+    margin-top: 10%;
     justify-content: center;
-   
+    margin-bottom: 5%; 
 }
 
 .not-found-div{
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     align-items: center;
     gap: 2rem;
+    padding: 10px;
 }

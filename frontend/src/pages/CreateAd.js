@@ -87,9 +87,9 @@ const CreateAd = () => {
           <label>Kategori</label>
           <select name="categories" value={category} id="categories"  onChange={handleChange} required>
               <option value=""> -- Välj i listan -- </option>
-              <option value="Kläder">Kläder</option>
-              <option value="Mat">Mat</option>
-              <option value="Inredning">Inredning</option>
+              <option value="kläder">Kläder</option>
+              <option value="mat">Mat</option>
+              <option value="inredning">Inredning</option>
           </select> 
           
           <input
@@ -146,7 +146,6 @@ const CreateAd = () => {
         </form>
       </section>
     </main>
-   
 );
     
 };
